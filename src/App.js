@@ -6,23 +6,19 @@ import About from "./components/About";
 import Item from "./components/Item";
 import React from "react";
 
-class App extends React.Component() {
-  state = { images: [] };
-
-  render() {
-    return (
-      <div className="App">
-        <BrowserRouter>
-          <Nav />
-          <Routes>
-            <Route path="/" element={<Search onSearch={this.handleSubmit} />} />
-            <Route path="about" element={<About />} />
-            <Route path="item/:id" element={<Item />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Search />} />
+          <Route path="about" element={<About />} />
+          <Route path="item/:id" element={<Item />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
