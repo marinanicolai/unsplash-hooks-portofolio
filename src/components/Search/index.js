@@ -11,10 +11,11 @@ class Search extends React.Component {
   render() {
     return (
       <div>
+        <h1>test</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            value={this.state.value}
+            value={this.state.images}
             onChange={this.handleChange}
             placeholder="search"
             required
