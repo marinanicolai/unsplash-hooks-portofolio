@@ -1,6 +1,6 @@
 import React from "react";
 
-class Search extends React.Component {
+class SearchBar extends React.Component {
   state = {
     images: [],
   };
@@ -11,7 +11,6 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <h1>test</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -36,4 +35,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default SearchBar;

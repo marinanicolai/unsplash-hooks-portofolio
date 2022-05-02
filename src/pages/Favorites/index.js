@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <div>
-      <h1>The images are fetched from unsplash api</h1>
+      <h1>These images user likes the most</h1>
     </div>
   );
 };
