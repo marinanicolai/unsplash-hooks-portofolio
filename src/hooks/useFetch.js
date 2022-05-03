@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const BASE_URL = "https://api.unsplash.com";
-const clientId = "EIJYDhLqG-eNEO9LlQmkRD776UF4ekwJsFPe217uYiE";
-
 export const baseURL = "https://api.unsplash.com/";
 
 export const axiosClient = axios.create({
@@ -11,7 +8,7 @@ export const axiosClient = axios.create({
   responseType: "json",
   headers: {
     Accept: "application/json",
-    Authorization: `Client-ID ${clientId}`,
+    Authorization: `Client-ID ${process.env.REACT_APP_API_KEY}`,
   },
 });
 
@@ -30,7 +27,6 @@ export const useFetch = (url, params) => {
       const { data } = await axiosClient.get(url, {
         params: params,
       });
-      console.log(data);
       setData(data);
       setLoading(false);
     } catch (err) {
