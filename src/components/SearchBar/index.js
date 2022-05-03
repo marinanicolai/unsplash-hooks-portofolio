@@ -1,38 +1,37 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 
-class SearchBar extends React.Component {
-  state = {
-    images: [],
-  };
-  handleChange = (e) => {
-    this.setState({ value: e.target.value });
+export default function SearchBar({ handleSubmit, handleClear }) {
+  const formRef = useRef();
+  const [searchText, setSearchText] = useState(null);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    handleSubmit(searchText);
   };
 
-  render() {
-    return (
+  const clearComplete = () => {
+    formRef.current.reset();
+    handleClear();
+  };
+
+  return (
+    <div>
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            value={this.state.images}
-            onChange={this.handleChange}
-            placeholder="search"
-            required
-          />
-        </form>
-        {this.state.images.map((image) => (
+        <form onSubmit={handleFormSubmit} ref={formRef}>
           <div>
-            <img
-              src={image.urls.regular}
-              key={image.id}
-              alt={image.description}
+            <input
+              type="text"
+              placeholder="Search a photo !"
+              onChange={(e) => setSearchText(e.target.value)}
             />
-            <div>{image.alt_description}</div>
+            <div>
+              <button type="button" onClick={clearComplete}>
+                Clear
+              </button>
+            </div>
           </div>
-        ))}
+        </form>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-export default SearchBar;
