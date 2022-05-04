@@ -1,11 +1,11 @@
+import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Search from "./pages/Search";
 import Favorites from "./pages/Favorites";
-import Item from "./components/Item";
+import ImageItem from "./components/ImageItem";
 import Home from "./pages/Home";
-import React from "react";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/search/:searchTerm" element={<Search />} />
           <Route path="favorites" element={<Favorites />} />
-          <Route path="item/:id" element={<Item />} />
+          <Route path="item/:id" element={<ImageItem />} />
         </Routes>
       </BrowserRouter>
     </div>

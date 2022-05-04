@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import ImageGallery from "../../components/PhotoGallery";
+import Loading from "../../components/Loading";
+import Error from "../../components/Error";
+import { useFetch } from "../../hooks/useFetch";
 
 const Home = () => {
+  const [query, setQuery] = useState(null);
+  const url = query ? `/search/photos` : "/photos/random";
+  const { data, isLoading, isError } = useFetch(`${url}/?count=20`, query);
+
   return (
     <div>
-      <h1>Home</h1>
+      {isLoading && <Loading />}
+      {isError && <Error />}
+      {data && <ImageGallery data={data} />}
     </div>
   );
 };
