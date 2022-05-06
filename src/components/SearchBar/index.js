@@ -1,12 +1,15 @@
 import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function SearchBar({ handleSubmit, handleClear }) {
+export default function SearchBar({ handleClear }) {
   const formRef = useRef();
   const [searchText, setSearchText] = useState(null);
 
+  const navigate = useNavigate();
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    handleSubmit(searchText);
+    navigate(`/search/${searchText}`);
   };
 
   const clearComplete = () => {
