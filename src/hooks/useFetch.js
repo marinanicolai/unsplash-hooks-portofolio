@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const baseURL = "https://api.unsplash.com/";
+const clientId = "EIJYDhLqG-eNEO9LlQmkRD776UF4ekwJsFPe217uYiE";
 
 export const axiosClient = axios.create({
   baseURL,
@@ -27,6 +28,7 @@ export const useFetch = (url, params) => {
       const { data } = await axiosClient.get(url, {
         params: params,
       });
+
       setData(data);
       setLoading(false);
     } catch (err) {

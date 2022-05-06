@@ -14,7 +14,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/search/:searchTerm" element={<Search />} />
+          <Route path="search/:searchTerm" element={<Search />} />
           <Route path="favorites" element={<Favorites />} />
           <Route path="item/:id" element={<ImageItem />} />
         </Routes>
