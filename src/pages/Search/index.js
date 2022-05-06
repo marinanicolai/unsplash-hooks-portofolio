@@ -1,4 +1,5 @@
 import React from "react";
+import ImageGallery from "../../components/PhotoGallery";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 
@@ -9,16 +10,7 @@ const Search = () => {
     query: params?.searchTerm,
   });
 
-  return (
-    <div>
-      {data?.results.map((e) => (
-        <a href={e.links.download} key={e.id} target="_blank" rel="noreferrer">
-          <img src={e.urls.small} alt={e.alt_description} />
-        </a>
-      ))}
-      {/*   <h1>data</h1> */}
-    </div>
-  );
+  return <div>{data && <ImageGallery data={data.results} />}</div>;
 };
 
 export default Search;
