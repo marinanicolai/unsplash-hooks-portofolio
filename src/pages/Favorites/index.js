@@ -1,11 +1,16 @@
 import React from "react";
+import ImageGallery from "../../components/PhotoGallery";
+import { useContext } from "react";
+import { StorageContext } from "../../App.js";
 
-const About = () => {
+const Favorites = () => {
+  const { favorites, isLoading, isError } = useContext(StorageContext);
+
   return (
-    <div>
-      <h1>These images user likes the most</h1>
-    </div>
+    <>
+      <div>{favorites && <ImageGallery data={favorites} />}</div>
+    </>
   );
 };
 
-export default About;
+export default Favorites;
