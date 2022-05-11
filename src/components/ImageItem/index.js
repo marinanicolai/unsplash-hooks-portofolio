@@ -38,6 +38,7 @@ const Item = ({ item }) => {
           alt="sample"
           className="img-responsive w-100"
         />
+        <h3>{item.likes} </h3>
         {isCurrentImageSaved ? (
           <FaRegStar onClick={() => onUnFav?.(item)} />
         ) : (
