@@ -1,7 +1,7 @@
 import React from "react";
 import ImageGallery from "../../components/PhotoGallery";
 import { useContext } from "react";
-import { StorageContext } from "../../App.js";
+import { StorageContext } from "../../providers";
 
 const Favorites = () => {
   const { favorites, isLoading, isError } = useContext(StorageContext);
