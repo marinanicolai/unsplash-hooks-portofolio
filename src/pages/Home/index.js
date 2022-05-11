@@ -8,7 +8,6 @@ const Home = () => {
   const [query, setQuery] = useState(null);
   const url = query ? `/search/photos` : "/photos/random";
   const { data, isLoading, isError } = useFetch(`${url}/?count=2`, query);
-  console.log(data);
   return (
     <div>
       {isLoading && <Loading />}
