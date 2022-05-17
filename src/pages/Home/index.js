@@ -2,18 +2,15 @@ import React, { useState } from "react";
 import ImageGallery from "../../components/PhotoGallery";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
-import Slider from "../../components/Slider";
 import { useFetch } from "../../hooks/useFetch";
 
 const Home = () => {
   const [query, setQuery] = useState(null);
   const url = query ? `/search/photos` : "/photos/random";
   const { data, isLoading, isError } = useFetch(`${url}/?count=2`, query);
-  console.log(data);
 
   return (
     <div>
-      <Slider data={data} />
       {isLoading && <Loading />}
       {isError && <Error />}
       {data && <ImageGallery data={data} />}
