@@ -87,9 +87,6 @@ const ImageGallery = ({ data }) => {
           })}
           {!isLastPhoto ? <RightArrow /> : null}
         </Content>
-        {
-          // TODO check if this is the first item in the array, if it's first hide the button
-        }
         <div>
           <div>
             <Likes image={likedIcon} />
