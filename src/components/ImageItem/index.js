@@ -10,7 +10,6 @@ const Item = ({ item, index, likes, setCurrentImageIndex }) => {
         className="img-responsive w-100"
         onClick={() => setCurrentImageIndex(index)}
       />
-    </ImageContainer>
   );
 };
 export default Item;
