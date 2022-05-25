@@ -1,13 +1,23 @@
 import styled from "styled-components";
+import Modal from "react-modal";
 
-export const ImageContainer = styled.div`
+export const ModalMainContainer = styled(Modal)`
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  max-height: 90%;
+  justify-content: center;
+  align-items: center;
 `;
 
+export const ModalHeader = styled.div``;
+
+export const ModalFooter = styled.div``;
+
 export const Image = styled.img`
-  justify-content: center;
-  margin: auto;
-  padding: 15px;
-  max-height: 80%;
+  padding: 20px;
 `;

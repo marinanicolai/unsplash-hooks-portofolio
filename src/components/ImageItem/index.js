@@ -1,15 +1,53 @@
-import React from "react";
-import { ImageContainer, Image } from "./ImageItem.styles";
+import React, { useContext, useState } from "react";
+import { FaStar, FaRegStar } from "react-icons/fa";
+import Modal from "react-modal";
+import { StorageContext } from "../../providers";
+import { Image } from "./ImageItem.styles";
+import { ModalHeader } from "../Modal/ModalHeader/index";
+import { ModalFooter } from "../Modal/ModalFooter/index";
+import { ModalContext } from "../Modal/ModalContext/index";
 
-const Item = ({ item, index, likes, setCurrentImageIndex }) => {
+Modal.setAppElement("#root");
+
+const Item = ({ item }) => {
+  const { favorites, onFav, onUnFav } = useContext(StorageContext);
+  const [isOpen, setIsOpen] = useState(false);
+
+  function toggleModal() {
+    setIsOpen(!isOpen);
+  }
+
+  const isCurrentImageSaved =
+    favorites && favorites?.find((image) => image.id === item.id);
+
   return (
-    <ImageContainer>
-      <Image
+    <div>
+      {/* <Modal isOpen={isOpen} onRequestClose={toggleModal}> */}
+      <img
         src={item.urls["small"]}
         alt="sample"
         className="img-responsive w-100"
-        onClick={() => setCurrentImageIndex(index)}
+        onClick={toggleModal}
       />
+
+      <Modal isOpen={isOpen} onRequestClose={toggleModal}>
+        <ModalHeader />
+        <button onClick={toggleModal}>Close modal</button>
+        <Image
+          src={item.urls["small"]}
+          alt="sample"
+          className="img-responsive w-100"
+        />
+        <h3>{item.likes} </h3>
+        {isCurrentImageSaved ? (
+          <FaRegStar onClick={() => onUnFav?.(item)} />
+        ) : (
+          <FaStar onClick={() => onFav(item)} />
+        )}
+        <ModalFooter />
+      </Modal>
+    </div>
   );
 };
+
 export default Item;
