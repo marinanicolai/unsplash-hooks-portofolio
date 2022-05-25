@@ -5,7 +5,7 @@ const Item = ({ item, index, likes, setCurrentImageIndex }) => {
   return (
     <ImageContainer>
       <Image
-        src={item.urls["small"]}
+        src={item.urls.small}
         alt="sample"
         className="img-responsive w-100"
         onClick={() => setCurrentImageIndex(index)}
