@@ -8,6 +8,7 @@ import Search from "./pages/Search";
 import Favorites from "./pages/Favorites";
 import ImageItem from "./components/ImageItem";
 import Home from "./pages/Home";
+import User from "./pages/User";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="search/:searchTerm" element={<Search />} />
             <Route path="favorites" element={<Favorites />} />
             <Route path="item/:id" element={<ImageItem />} />
+            <Route path="user/:username" element={<User />} />
           </Routes>
         </BrowserRouter>
       </StorageProvider>

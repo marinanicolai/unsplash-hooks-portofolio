@@ -3,6 +3,7 @@ import Modal from "reactjs-popup";
 import ImageItem from "../ImageItem";
 import "reactjs-popup/dist/index.css";
 import { StorageContext } from "../../providers";
+import { Link } from "react-router-dom";
 
 import {
   closeIcon,
@@ -46,7 +47,7 @@ const ImageGallery = ({ data }) => {
     const image = direction === "left" ? leftArrow : rightArrow;
     return <StyledArrow image={image} onClick={clickHandler} />;
   };
-
+  console.log(data);
   return (
     <div>
       <Modal
@@ -56,14 +57,14 @@ const ImageGallery = ({ data }) => {
       >
         <Header>
           <div>
-            <a href="#">
+            <Link to="user">
               <img
                 className="profile"
                 src={data?.[currentImageIndex]?.user?.profile_image["small"]}
                 alt="profile"
               />
               <div> {data?.[currentImageIndex]?.user?.name}</div>
-            </a>
+            </Link>
           </div>
           <Close image={closeIcon} onClick={toggleModal} />
         </Header>
