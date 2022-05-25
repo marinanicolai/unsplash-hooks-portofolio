@@ -39,7 +39,7 @@ export const Profile = styled.div`
   cursor: pointer;
 `;
 
-export const Arrow = styled.div`
+export const StyledArrow = styled.div`
   background-image: url(${(props) => props.image});
   background-repeat: no-repeat;
   height: 31px;

@@ -3,7 +3,7 @@ import Modal from "reactjs-popup";
 import ImageItem from "../ImageItem";
 import "reactjs-popup/dist/index.css";
 import { StorageContext } from "../../providers";
-import { ModalFooter } from "../Modal/ModalFooter/index";
+
 import {
   closeIcon,
   leftArrow,
@@ -14,15 +14,13 @@ import {
 } from "../../utils/resources/index";
 import {
   Close,
-  Arrow,
+  StyledArrow,
   Content,
   Header,
   SavedImg,
   Likes,
   Profile,
 } from "./PhotoGallery.styles";
-
-import "../../App.css";
 
 const ImageGallery = ({ data }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(null);
@@ -39,22 +37,18 @@ const ImageGallery = ({ data }) => {
   const isCurrentImageSaved =
     favorites && favorites?.find((image) => image?.id === currentImage?.id);
 
-  const LeftArrow = () => (
-    <Arrow
-      image={leftArrow}
-      onClick={() => setCurrentImageIndex(currentImageIndex - 1)}
-    />
-  );
-
-  const RightArrow = () => (
-    <Arrow
-      image={rightArrow}
-      onClick={() => setCurrentImageIndex(currentImageIndex + 1)}
-    />
-  );
+  const Arrow = ({ direction }) => {
+    const clickHandler = (direction) => {
+      return direction === "left"
+        ? setCurrentImageIndex(currentImageIndex - 1)
+        : setCurrentImageIndex(currentImageIndex + 1);
+    };
+    const image = direction === "left" ? leftArrow : rightArrow;
+    return <StyledArrow image={image} onClick={clickHandler} />;
+  };
 
   return (
-    <div className="box">
+    <div>
       <Modal
         closeOnDocumentClick
         open={currentImageIndex !== null}
@@ -74,7 +68,7 @@ const ImageGallery = ({ data }) => {
           <Close image={closeIcon} onClick={toggleModal} />
         </Header>
         <Content>
-          {!isFirstPhoto ? <LeftArrow /> : null}
+          {!isFirstPhoto && <Arrow direction={"left"} />}
           {data?.map((item, index) => {
             return currentImageIndex === index ? (
               <ImageItem
@@ -85,7 +79,7 @@ const ImageGallery = ({ data }) => {
               />
             ) : null;
           })}
-          {!isLastPhoto ? <RightArrow /> : null}
+          {!isLastPhoto && <Arrow direction={"right"} />}
         </Content>
         <div>
           <div>
