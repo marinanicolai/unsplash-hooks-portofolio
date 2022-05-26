@@ -30,6 +30,7 @@ const ImageGallery = ({ data }) => {
   const arrayLength = data?.length;
   const isFirstPhoto = data[0]?.id === currentImage?.id;
   const isLastPhoto = data[arrayLength - 1]?.id === currentImage?.id;
+  const currentImageUser = data?.[currentImageIndex]?.user;
 
   function toggleModal() {
     setCurrentImageIndex(null);
@@ -57,13 +58,13 @@ const ImageGallery = ({ data }) => {
       >
         <Header>
           <div>
-            <Link to="user">
+            <Link to={`user/${currentImageUser?.username}`}>
               <img
                 className="profile"
-                src={data?.[currentImageIndex]?.user?.profile_image["small"]}
+                src={currentImageUser?.profile_image["small"]}
                 alt="profile"
               />
-              <div> {data?.[currentImageIndex]?.user?.name}</div>
+              <div> {currentImageUser?.name}</div>
             </Link>
           </div>
           <Close image={closeIcon} onClick={toggleModal} />
