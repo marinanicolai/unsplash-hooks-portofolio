@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import ImageGallery from "../../components/PhotoGallery";
 import { useFetch } from "../../hooks/useFetch";
 
 const User = () => {
@@ -8,7 +9,7 @@ const User = () => {
   console.log("data", data);
   return (
     <>
-      <div>this is a User page</div>
+      <div>{data && <ImageGallery data={data} />}</div>
     </>
   );
 };
