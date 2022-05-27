@@ -3,7 +3,7 @@ import Modal from "reactjs-popup";
 import ImageItem from "../ImageItem";
 import "reactjs-popup/dist/index.css";
 import { StorageContext } from "../../providers";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import {
   closeIcon,
@@ -24,6 +24,7 @@ import {
 } from "./PhotoGallery.styles";
 
 const ImageGallery = ({ data }) => {
+  const location = useLocation();
   const [currentImageIndex, setCurrentImageIndex] = useState(null);
   const currentImage = data?.[currentImageIndex];
   const { favorites, onFav, onUnFav } = useContext(StorageContext);
@@ -31,6 +32,7 @@ const ImageGallery = ({ data }) => {
   const isFirstPhoto = data[0]?.id === currentImage?.id;
   const isLastPhoto = data[arrayLength - 1]?.id === currentImage?.id;
   const currentImageUser = data?.[currentImageIndex]?.user;
+  const hideUserLink = location.pathname?.includes("user");
 
   function toggleModal() {
     setCurrentImageIndex(null);
@@ -48,7 +50,6 @@ const ImageGallery = ({ data }) => {
     const image = direction === "left" ? leftArrow : rightArrow;
     return <StyledArrow image={image} onClick={clickHandler} />;
   };
-  console.log(data);
   return (
     <div>
       <Modal
@@ -58,14 +59,16 @@ const ImageGallery = ({ data }) => {
       >
         <Header>
           <div>
-            <Link to={`user/${currentImageUser?.username}`}>
-              <img
-                className="profile"
-                src={currentImageUser?.profile_image["small"]}
-                alt="profile"
-              />
-              <div> {currentImageUser?.name}</div>
-            </Link>
+            {!hideUserLink && (
+              <Link to={`user/${currentImageUser?.username}`}>
+                <img
+                  className="profile"
+                  src={currentImageUser?.profile_image.small}
+                  alt="profile"
+                />
+                <div> {currentImageUser?.name}</div>
+              </Link>
+            )}
           </div>
           <Close image={closeIcon} onClick={toggleModal} />
         </Header>
