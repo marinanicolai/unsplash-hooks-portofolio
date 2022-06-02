@@ -6,8 +6,11 @@ import { useFetch } from "../../hooks/useFetch";
 const User = () => {
   const params = useParams();
   const { data } = useFetch(`/users/${params?.username}/photos`);
-  console.log("data", data);
-  console.log(data?.[0]?.user?.portofolio_url);
+
+  const { statistics } = useFetch(`/users/${params?.username}/statistics`);
+
+  const username = data?.[0]?.user?.username;
+  console.log("username", username);
   return (
     <>
       <div>
@@ -15,19 +18,22 @@ const User = () => {
           <img src={data?.[0]?.user?.profile_image.medium} alt={data.name} />
         )}
         <h1>{data?.[0]?.user?.name}</h1>
-
-        <a href="{data?.[0]?.user?.portfolio_url}">
-          {data?.[0]?.user?.portfolio_url}
-        </a>
         <p> {data?.[0]?.user?.bio}</p>
+        <a
+          href="https://unsplash.com/username"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {data?.[0]?.user?.username}
+        </a>
         <div>
           <div>
             <h3>{data?.[0]?.user?.total_photos}</h3>
             <span>Photos</span>
           </div>
           <div>
-            <h3>{data?.[0]?.user?.links?.followers}</h3>
-            <span>Followers</span>
+            <h3>{data?.[0]?.user?.total_likes}</h3>
+            <span>Likes</span>
           </div>
           <div>
             <h3>{data?.[0]?.user?.links?.following}</h3>
