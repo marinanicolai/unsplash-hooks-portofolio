@@ -3,6 +3,7 @@ import Modal from "reactjs-popup";
 import ImageItem from "../ImageItem";
 import "reactjs-popup/dist/index.css";
 import { StorageContext } from "../../providers";
+import { Link, useLocation } from "react-router-dom";
 
 import {
   closeIcon,
@@ -23,12 +24,15 @@ import {
 } from "./PhotoGallery.styles";
 
 const ImageGallery = ({ data }) => {
+  const location = useLocation();
   const [currentImageIndex, setCurrentImageIndex] = useState(null);
   const currentImage = data?.[currentImageIndex];
   const { favorites, onFav, onUnFav } = useContext(StorageContext);
   const arrayLength = data?.length;
   const isFirstPhoto = data[0]?.id === currentImage?.id;
   const isLastPhoto = data[arrayLength - 1]?.id === currentImage?.id;
+  const currentImageUser = data?.[currentImageIndex]?.user;
+  const hideUserLink = location.pathname?.includes("user");
 
   function toggleModal() {
     setCurrentImageIndex(null);
@@ -46,7 +50,6 @@ const ImageGallery = ({ data }) => {
     const image = direction === "left" ? leftArrow : rightArrow;
     return <StyledArrow image={image} onClick={clickHandler} />;
   };
-
   return (
     <div>
       <Modal
@@ -56,14 +59,16 @@ const ImageGallery = ({ data }) => {
       >
         <Header>
           <div>
-            <a href="#">
-              <img
-                className="profile"
-                src={data?.[currentImageIndex]?.user?.profile_image["small"]}
-                alt="profile"
-              />
-              <div> {data?.[currentImageIndex]?.user?.name}</div>
-            </a>
+            {!hideUserLink && (
+              <Link to={`user/${currentImageUser?.username}`}>
+                <img
+                  className="profile"
+                  src={currentImageUser?.profile_image.small}
+                  alt="profile"
+                />
+                <div> {currentImageUser?.name}</div>
+              </Link>
+            )}
           </div>
           <Close image={closeIcon} onClick={toggleModal} />
         </Header>
