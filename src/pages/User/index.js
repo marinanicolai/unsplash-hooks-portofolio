@@ -6,11 +6,7 @@ import { useFetch } from "../../hooks/useFetch";
 const User = () => {
   const params = useParams();
   const { data } = useFetch(`/users/${params?.username}/photos`);
-
-  const { statistics } = useFetch(`/users/${params?.username}/statistics`);
-
-  const username = data?.[0]?.user?.username;
-  console.log("username", username);
+  const { data: followers } = useFetch(`/users/${params?.username}/statistics`);
   return (
     <>
       <div>
@@ -36,8 +32,8 @@ const User = () => {
             <span>Likes</span>
           </div>
           <div>
-            <h3>{data?.[0]?.user?.links?.following}</h3>
-            <span>Following</span>
+            <h3>{followers?.downloads?.total}</h3>
+            <span>Downloands</span>
           </div>
         </div>
         {data && <ImageGallery data={data} />}
