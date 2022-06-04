@@ -9,6 +9,7 @@ import Favorites from "./pages/Favorites";
 import ImageItem from "./components/ImageItem";
 import Home from "./pages/Home";
 import User from "./pages/User";
+import Photo from "./pages/Photo";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="favorites" element={<Favorites />} />
             <Route path="item/:id" element={<ImageItem />} />
             <Route path="user/:username" element={<User />} />
+            <Route path="photo/:photoid" element={<Photo />} />
           </Routes>
         </BrowserRouter>
       </StorageProvider>
