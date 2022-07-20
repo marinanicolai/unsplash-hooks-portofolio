@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { SearchIcon, SearchBox, Box, OuterBox } from "./SearchBar.styles";
 
 export default function SearchBar({ handleClear }) {
   const formRef = useRef();
@@ -21,18 +22,24 @@ export default function SearchBar({ handleClear }) {
     <div>
       <div>
         <form onSubmit={handleFormSubmit} ref={formRef}>
-          <div>
-            <input
-              type="text"
-              placeholder="Search a photo !"
-              onChange={(e) => setSearchText(e.target.value)}
-            />
+          <OuterBox>
+            <Box>
+              <SearchIcon>
+                <i className="search-icon fa-solid fa-magnifying-glass"></i>
+              </SearchIcon>
+              <SearchBox
+                className="input-box"
+                type="text"
+                placeholder="Search a photo !"
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+            </Box>
             <div>
               <button type="button" onClick={clearComplete}>
                 Clear
               </button>
             </div>
-          </div>
+          </OuterBox>
         </form>
       </div>
     </div>

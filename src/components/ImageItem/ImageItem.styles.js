@@ -3,11 +3,17 @@ import styled from "styled-components";
 export const ImageContainer = styled.div`
   display: flex;
   max-height: 90%;
+  margin: auto;
 `;
 
 export const Image = styled.img`
   justify-content: center;
-  margin: auto;
   padding: 15px;
   max-height: 80%;
+`;
+
+export const AuthorName = styled.h4`
+  font-family: Poppins, sans-serif;
+  background-color: white;
+  color: rgb(43, 43, 43);
 `;

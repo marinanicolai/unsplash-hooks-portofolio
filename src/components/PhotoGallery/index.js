@@ -76,12 +76,14 @@ const ImageGallery = ({ data }) => {
           {!isFirstPhoto && <Arrow direction={"left"} />}
           {data?.map((item, index) => {
             return currentImageIndex === index ? (
-              <ImageItem
-                key={item.id}
-                item={item}
-                index={index}
-                setCurrentImageIndex={setCurrentImageIndex}
-              />
+              <Link to={`photo/${item.id}`} state={currentImage}>
+                <ImageItem
+                  key={item.id}
+                  item={item}
+                  index={index}
+                  setCurrentImageIndex={setCurrentImageIndex}
+                />
+              </Link>
             ) : null;
           })}
           {!isLastPhoto && <Arrow direction={"right"} />}
