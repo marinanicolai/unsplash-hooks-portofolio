@@ -8,7 +8,7 @@ export const SearchIcon = styled.div`
 
 export const SearchBox = styled.input`
   height: 5vh;
-  border: transparent;
+  border: none;
   font-size: 18px;
   padding-left: 30px;
 `;
@@ -18,10 +18,11 @@ export const Box = styled.div`
   align-items: center;
   justify-content: center;
   &:active ${SearchBox} {
-    border: transparent;
+    border: none;
   }
 `;
 
 export const OuterBox = styled.div`
   display: flex;
+  border: none;
 `;

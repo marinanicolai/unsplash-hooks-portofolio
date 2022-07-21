@@ -8,3 +8,9 @@ export const Navigation = styled.div`
 export const CameraImage = styled.div`
   background-image: url(${(props) => props.img});
 `;
+
+export const Image = styled.img`
+  justify-content: center;
+  padding: 15px;
+  max-height: 80%;
+`;

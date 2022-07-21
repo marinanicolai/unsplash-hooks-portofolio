@@ -18,6 +18,10 @@ export const SavedImg = styled.div`
   height: 31px;
   width: 31px;
   cursor: pointer;
+  /* margin-bottom: 0px; */
+  margin-left: 150px;
+
+  /* float: right; */
 `;
 export const Likes = styled.div`
   background-image: url(${(props) => props.image});
@@ -44,6 +48,7 @@ export const StyledArrow = styled.div`
   background-repeat: no-repeat;
   height: 31px;
   width: 31px;
+  margin: auto;
 `;
 
 export const Content = styled.div`
@@ -56,4 +61,17 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+export const LikedBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60px;
+`;
+
+export const Footer = styled.div`
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
 `;

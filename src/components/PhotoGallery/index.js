@@ -21,6 +21,8 @@ import {
   SavedImg,
   Likes,
   Profile,
+  LikedBox,
+  Footer,
 } from "./PhotoGallery.styles";
 
 const ImageGallery = ({ data }) => {
@@ -88,11 +90,11 @@ const ImageGallery = ({ data }) => {
           })}
           {!isLastPhoto && <Arrow direction={"right"} />}
         </Content>
-        <div>
-          <div>
+        <Footer>
+          <LikedBox>
             <Likes image={likedIcon} />
             {data?.[currentImageIndex]?.likes}
-          </div>
+          </LikedBox>
           {isCurrentImageSaved ? (
             <SavedImg
               image={savedFavoriteIcon}
@@ -104,7 +106,7 @@ const ImageGallery = ({ data }) => {
               onClick={() => onFav(currentImage)}
             />
           )}
-        </div>
+        </Footer>
       </Modal>
 
       {data?.map((item, index) => {
