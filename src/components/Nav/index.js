@@ -1,8 +1,7 @@
 import React from "react";
 import SearchBar from "../SearchBar";
 import { Link } from "react-router-dom";
-import { Navigation, CameraImage, Image } from "./Nav.styles";
-
+import { Navigation, CameraImage } from "./Nav.styles";
 
 const Nav = () => {
   return (
