@@ -1,5 +1,5 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   ImageContainer,
   Image,
@@ -8,6 +8,14 @@ import {
 
 const Photo = () => {
   let location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // if no location state/ data redirect to homepage
+    if (!location.state) {
+      return navigate("/");
+    }
+  }, [location.state]);
 
   console.log(location.state);
   console.log(location.state.user.first_name);
@@ -15,6 +23,11 @@ const Photo = () => {
   console.log(location.state.urls.regular);
   console.log("likes", location.state.likes);
   console.log("views", location.state.views);
+
+  if (!location.state) {
+    return null;
+  }
+
   return (
     <div>
       <ImageContainer>
@@ -24,9 +37,7 @@ const Photo = () => {
         />
         <AuthorName>{location.state.user.first_name}</AuthorName>
       </ImageContainer>
-      <p>
-        if location state undefined => use useNavigate , navigate on front page{" "}
-      </p>
+      <Image src={location.state.urls.small} />
     </div>
   );
 };
