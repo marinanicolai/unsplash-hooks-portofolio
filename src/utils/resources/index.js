@@ -5,6 +5,7 @@ import savedFavoriteIcon from "./../resources/Iconly-Filled-Star.svg";
 import leftArrow from "./../resources/leftArrow.svg";
 import rightArrow from "./../resources/rightArrow.svg";
 import heartIcon from "./../resources/heartIcon.svg";
+import logo from "./../resources/LogoUnsplash.png";
 
 export {
   closeIcon,
@@ -14,4 +15,5 @@ export {
   leftArrow,
   rightArrow,
   heartIcon,
+  logo
 };
