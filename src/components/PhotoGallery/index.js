@@ -78,7 +78,7 @@ const ImageGallery = ({ data }) => {
           {!isFirstPhoto && <Arrow direction={"left"} />}
           {data?.map((item, index) => {
             return currentImageIndex === index ? (
-              <Link to={`photo/${item.id}`} state={currentImage}>
+              <Link key={item.id} to={`photo/${item.id}`} state={currentImage}>
                 <ImageItem
                   key={item.id}
                   item={item}
