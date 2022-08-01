@@ -1,6 +1,13 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { SearchIcon, SearchBox, Box, OuterBox } from "./SearchBar.styles";
+import {
+  SearchIcon,
+  SearchBox,
+  Box,
+  OuterBox,
+  Button,
+} from "./SearchBar.styles";
+import { clear } from "../../utils/resources/index";
 
 export default function SearchBar({ handleClear }) {
   const formRef = useRef();
@@ -35,9 +42,9 @@ export default function SearchBar({ handleClear }) {
               />
             </Box>
             <div>
-              <button type="button" onClick={clearComplete}>
+              <Button type="button" onClick={clearComplete}>
                 Clear
-              </button>
+              </Button>
             </div>
           </OuterBox>
         </form>

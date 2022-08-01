@@ -25,4 +25,13 @@ export const Box = styled.div`
 export const OuterBox = styled.div`
   display: flex;
   border: none;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Button = styled.button`
+  background-color: red;
+  height: 35px;
+  width: 55px;
+  border-radius: 5px solid clear;
 `;

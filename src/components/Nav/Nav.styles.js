@@ -6,6 +6,7 @@ export const Navigation = styled.div`
 `;
 
 export const CameraImage = styled.div`
+  padding-top: 15px;
   background-image: url(${(props) => props.img});
 `;
 

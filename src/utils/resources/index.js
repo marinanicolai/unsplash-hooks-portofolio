@@ -6,6 +6,7 @@ import leftArrow from "./../resources/leftArrow.svg";
 import rightArrow from "./../resources/rightArrow.svg";
 import heartIcon from "./../resources/heartIcon.svg";
 import logo from "./../resources/LogoUnsplash.png";
+import clear from "./../resources/Clear.png";
 
 export {
   closeIcon,
@@ -15,5 +16,6 @@ export {
   leftArrow,
   rightArrow,
   heartIcon,
-  logo
+  logo,
+  clear,
 };
