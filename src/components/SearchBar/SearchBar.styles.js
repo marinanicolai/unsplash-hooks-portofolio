@@ -30,8 +30,13 @@ export const OuterBox = styled.div`
 `;
 
 export const Button = styled.button`
+  font-family: "Times New Roman";
+  font-size: 1em;
   height: 35px;
   width: 55px;
-  border-radius: 15px solid clear;
+  border-radius: 5px;
+  border: transparent;
   margin-right: 15px;
+  margin-left: 15px;
+  background-color: #32a8a4;
 `;

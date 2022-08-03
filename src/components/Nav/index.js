@@ -11,7 +11,6 @@ const Nav = () => {
           <img alt="camera-img" className="camera-image" src={logo} />
         </CameraImage>
       </Link>
-      <p>Photos</p>
       <SearchBar />
 
       <Link to="/favorites">

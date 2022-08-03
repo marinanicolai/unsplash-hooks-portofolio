@@ -27,3 +27,7 @@ export const Photos = styled.div`
 export const Likes = styled.div`
   padding-right: 15px;
 `;
+
+export const AuthorPortofolio = styled.div`
+  text-align: center;
+`;

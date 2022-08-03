@@ -10,6 +10,7 @@ import {
   Info,
   Photos,
   Likes,
+  AuthorPortofolio,
 } from "./User.styles";
 
 const User = () => {
@@ -49,7 +50,9 @@ const User = () => {
             </div>
           </Info>
         </AuthorInfo>
-        {data && <ImageGallery data={data} />}
+        <AuthorPortofolio>
+          {data && <ImageGallery data={data} />}
+        </AuthorPortofolio>
       </div>
     </>
   );
