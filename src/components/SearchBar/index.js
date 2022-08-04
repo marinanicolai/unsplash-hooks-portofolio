@@ -7,7 +7,6 @@ import {
   OuterBox,
   Button,
 } from "./SearchBar.styles";
-import { clear } from "../../utils/resources/index";
 
 export default function SearchBar({ handleClear }) {
   const formRef = useRef();

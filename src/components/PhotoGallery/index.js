@@ -20,7 +20,6 @@ import {
   Header,
   SavedImg,
   Likes,
-  Profile,
   LikedBox,
   Footer,
 } from "./PhotoGallery.styles";

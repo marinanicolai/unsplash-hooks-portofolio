@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const baseURL = "https://api.unsplash.com/";
-const clientId = "EIJYDhLqG-eNEO9LlQmkRD776UF4ekwJsFPe217uYiE";
+// const clientId = "EIJYDhLqG-eNEO9LlQmkRD776UF4ekwJsFPe217uYiE";
 
 export const axiosClient = axios.create({
   baseURL,
@@ -21,6 +21,7 @@ export const useFetch = (url, params) => {
   useEffect(() => {
     setLoading(true);
     fetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetch = async () => {

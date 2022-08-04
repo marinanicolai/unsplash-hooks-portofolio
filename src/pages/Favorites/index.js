@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { StorageContext } from "../../providers";
 
 const Favorites = () => {
-  const { favorites, isLoading, isError } = useContext(StorageContext);
+  const { favorites } = useContext(StorageContext);
 
   return (
     <>

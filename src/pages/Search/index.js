@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 
 const Search = () => {
   const params = useParams();
-  const { data, isLoading, isError } = useFetch(`/search/photos/?count=2`, {
+  const { data } = useFetch(`/search/photos/?count=2`, {
     query: params?.searchTerm,
   });
 

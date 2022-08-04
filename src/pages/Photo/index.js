@@ -15,7 +15,7 @@ const Photo = () => {
     if (!location.state) {
       return navigate("/");
     }
-  }, [location.state]);
+  }, [location.state, navigate]);
 
   console.log(location.state);
   console.log(location.state.user.first_name);

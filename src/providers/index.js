@@ -4,22 +4,22 @@ import { useLocalStorage } from "react-use";
 export const StorageContext = React.createContext();
 
 export const StorageProvider = ({ children }) => {
-  const [favorites, setValue, remove] = useLocalStorage("favorites", []);
+  const [favorites, setValue] = useLocalStorage("favorites", []);
 
   const onFav = useCallback(
     (image) => {
       const favs = [...favorites, image];
       setValue(favs);
     },
-    [favorites]
+    [favorites, setValue]
   );
 
   const onUnFav = useCallback(
-    ({ image, id, removeImage }) => {
+    ({ id }) => {
       const filteredImages = favorites.filter((image) => image.id !== id);
       setValue(filteredImages);
     },
-    [favorites]
+    [favorites, setValue]
   );
 
   return (
