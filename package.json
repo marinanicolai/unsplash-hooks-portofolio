@@ -1,5 +1,5 @@
 {
-  "name": "unsplash-hooks-devpro",
+  "name": "unsplash-hooks-portofolio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +15,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
-    "react-use": "^17.3.2",
+    "react-use": "^17.4.0",
     "reactjs-popup": "^2.0.5",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.5",
