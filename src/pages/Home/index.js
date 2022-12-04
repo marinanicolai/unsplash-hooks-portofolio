@@ -10,6 +10,7 @@ const Home = () => {
   const { data, isLoading, isError } = useFetch(`${url}/?count=2`, query);
   return (
     <div>
+      <h1>Photo app</h1>
       {isLoading && <Loading />}
       {isError && <Error />}
       {data && <ImageGallery data={data} />}
