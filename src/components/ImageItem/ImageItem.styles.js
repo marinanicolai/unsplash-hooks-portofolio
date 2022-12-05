@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-export const ImageContainer = styled.div``;
-
 export const Image = styled.img`
   justify-content: center;
   padding: 15px;

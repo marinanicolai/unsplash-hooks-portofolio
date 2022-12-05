@@ -1,10 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import {
-  ImageContainer,
-  Image,
-  AuthorName,
-} from "../../components/ImageItem/ImageItem.styles";
+import { Image, AuthorName } from "../../components/ImageItem/ImageItem.styles";
 
 const Photo = () => {
   let location = useLocation();
@@ -30,13 +26,13 @@ const Photo = () => {
 
   return (
     <div>
-      <ImageContainer>
+      <div>
         <Image
           src={location.state.user.profile_image.medium}
           alt="name of the author"
         />
         <AuthorName>{location.state.user.first_name}</AuthorName>
-      </ImageContainer>
+      </div>
       <Image src={location.state.urls.small} />
     </div>
   );

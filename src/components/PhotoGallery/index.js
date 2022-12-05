@@ -107,18 +107,23 @@ const ImageGallery = ({ data }) => {
           )}
         </Footer>
       </Modal>
-
-      {data?.map((item, index) => {
-        return (
-          <ImageItem
-            key={item.id}
-            item={item}
-            index={index}
-            likes={item.likes}
-            setCurrentImageIndex={setCurrentImageIndex}
-          />
-        );
-      })}
+      <div class="row">
+       
+          {data?.map((item, index) => {
+            return (
+              <>
+                <ImageItem
+                  key={item.id}
+                  item={item}
+                  index={index}
+                  likes={item.likes}
+                  setCurrentImageIndex={setCurrentImageIndex}
+                />
+              </>
+            );
+          })}
+        
+      </div>
     </div>
   );
 };

@@ -1,16 +1,16 @@
 import React from "react";
-import { ImageContainer, Image } from "./ImageItem.styles";
+import { Image } from "./ImageItem.styles";
 
 const Item = ({ item, index, likes, setCurrentImageIndex }) => {
   return (
-    <ImageContainer>
+    <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
       <Image
         src={item.urls.small}
         alt="sample"
         className="img-responsive w-100"
         onClick={() => setCurrentImageIndex(index)}
       />
-    </ImageContainer>
+    </div>
   );
 };
 export default Item;
