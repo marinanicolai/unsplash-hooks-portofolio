@@ -10,12 +10,14 @@ import ImageItem from "./components/ImageItem";
 import Home from "./pages/Home";
 import User from "./pages/User";
 import Photo from "./pages/Photo";
+import Intro from "./components/Intro";
 
 function App() {
   return (
     <div className="App">
       <StorageProvider>
         <BrowserRouter>
+          <Intro />
           <Nav />
           <Routes>
             <Route path="/" element={<Home />} />
