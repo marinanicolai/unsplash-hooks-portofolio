@@ -8,3 +8,4 @@ export const Title = styled.span`
   font-weight: bold;
   font-size: 25px;
 `;
+
