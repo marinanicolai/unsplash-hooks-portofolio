@@ -7,7 +7,7 @@ import { useFetch } from "../../hooks/useFetch";
 const Home = () => {
   const [query] = useState(null);
   const url = query ? `/search/photos` : "/photos/random";
-  const { data, isLoading, isError } = useFetch(`${url}/?count=2`, query);
+  const { data, isLoading, isError } = useFetch(`${url}/?count=10`, query);
   return (
     <div>
       {isLoading && <Loading />}
