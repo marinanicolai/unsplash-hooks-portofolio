@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Navigation = styled.div`
-  font-family: "Times New Roman";
   font-size: 1em;
   display: flex;
   align-items: center;
@@ -9,7 +8,6 @@ export const Navigation = styled.div`
 
 export const CameraImage = styled.div`
   padding-top: 15px;
-  background-image: url(${(props) => props.img});
 `;
 
 export const Image = styled.img`
@@ -21,5 +19,4 @@ export const Image = styled.img`
 export const HeartImage = styled.div`
   width: 5px;
   padding-top: 15px;
-  background-image: url(${(props) => props.img});
 `;

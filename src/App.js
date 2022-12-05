@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import User from "./pages/User";
 import Photo from "./pages/Photo";
 import Intro from "./components/Intro";
+import Footer from "./components/Footer";
 import { ThemeContext } from "./components/Context/Context";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
             </Routes>
           </BrowserRouter>
         </StorageProvider>
+        <Footer />
       </div>
     </ThemeContext.Provider>
   );

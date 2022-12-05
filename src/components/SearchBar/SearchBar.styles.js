@@ -30,7 +30,6 @@ export const OuterBox = styled.div`
 `;
 
 export const Button = styled.button`
-  font-family: "Times New Roman";
   font-size: 1em;
   height: 35px;
   width: 55px;
