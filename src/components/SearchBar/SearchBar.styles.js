@@ -7,6 +7,9 @@ export const SearchIcon = styled.div`
 `;
 
 export const SearchBox = styled.input`
+  @media (max-width: 570px) {
+    width: 200px;
+  }
   height: 5vh;
   border: none;
   font-size: 18px;
@@ -30,6 +33,9 @@ export const OuterBox = styled.div`
 `;
 
 export const Button = styled.button`
+  @media (max-width: 570px) {
+    display: none;
+  }
   font-size: 1em;
   height: 35px;
   width: 55px;

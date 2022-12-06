@@ -22,7 +22,9 @@ import {
   Likes,
   LikedBox,
   Footer,
+  StyledRow,
 } from "./PhotoGallery.styles";
+import { Row } from "antd";
 
 const ImageGallery = ({ data }) => {
   const location = useLocation();
@@ -107,8 +109,8 @@ const ImageGallery = ({ data }) => {
           )}
         </Footer>
       </Modal>
-      <div class="row">
-       
+      <StyledRow>
+        <div className="row">
           {data?.map((item, index) => {
             return (
               <>
@@ -122,8 +124,8 @@ const ImageGallery = ({ data }) => {
               </>
             );
           })}
-        
-      </div>
+        </div>
+      </StyledRow>
     </div>
   );
 };

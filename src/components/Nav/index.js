@@ -3,7 +3,14 @@ import { useContext } from "react";
 
 import SearchBar from "../SearchBar";
 import { Link } from "react-router-dom";
-import { Navigation, CameraImage, HeartImage } from "./Nav.styles";
+import {
+  Navigation,
+  CameraImage,
+  HeartImage,
+  TextHeart,
+  StyledLink,
+  Switch,
+} from "./Nav.styles";
 import { logo, heartIcon } from "../../utils/resources/index";
 import { ThemeContext } from "../Context/Context";
 import ReactSwitch from "react-switch";
@@ -20,13 +27,14 @@ const Nav = () => {
       </Link>
       <SearchBar />
 
-      <Link to="/favorites">
+      <StyledLink to="/favorites">
         <HeartImage>
           <img alt="camera-img" className="camera-image" src={heartIcon} />
+          <TextHeart>Saved</TextHeart>
         </HeartImage>
-      </Link>
-      <p>Saved</p>
-      <div className="switch">
+      </StyledLink>
+      {/* <p>Saved</p> */}
+      <Switch>
         <label>
           {theme === "light" ? (
             <span className="theme">🌒</span>
@@ -39,7 +47,7 @@ const Nav = () => {
           checked={theme === "dark"}
           onColor="#808080"
         />
-      </div>
+      </Switch>
     </Navigation>
   );
 };
