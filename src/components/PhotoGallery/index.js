@@ -24,7 +24,6 @@ import {
   Footer,
   StyledRow,
 } from "./PhotoGallery.styles";
-import { Row } from "antd";
 
 const ImageGallery = ({ data }) => {
   const location = useLocation();
@@ -115,9 +114,8 @@ const ImageGallery = ({ data }) => {
             return (
               <>
                 <ImageItem
-                  key={item.id}
+                  key={index}
                   item={item}
-                  index={index}
                   likes={item.likes}
                   setCurrentImageIndex={setCurrentImageIndex}
                 />
