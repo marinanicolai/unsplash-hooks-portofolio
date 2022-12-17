@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Close = styled.div`
   background-image: url(${(props) => props.image});
@@ -74,4 +75,16 @@ export const Footer = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 10px;
+`;
+
+export const AuthorInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 20px 0px 20px 15px;
+  color: black;
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
 `;

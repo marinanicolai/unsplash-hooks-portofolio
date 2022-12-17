@@ -24,7 +24,10 @@ import {
   Likes,
   LikedBox,
   Footer,
+  AuthorInfo,
+  StyledLink,
 } from "./PhotoGallery.styles";
+//import { AuthorInfo } from "../../pages/User/User.styles";
 
 const ImageGallery = ({ data }) => {
   const location = useLocation();
@@ -67,14 +70,16 @@ const ImageGallery = ({ data }) => {
         <Header>
           <div>
             {!hideUserLink && (
-              <Link to={`user/${currentImageUser?.username}`}>
-                <img
-                  className="profile"
-                  src={currentImageUser?.profile_image.small}
-                  alt="profile"
-                />
-                <div> {currentImageUser?.name}</div>
-              </Link>
+              <StyledLink to={`user/${currentImageUser?.username}`}>
+                <AuthorInfo>
+                  <img
+                    className="profile"
+                    src={currentImageUser?.profile_image.small}
+                    alt="profile"
+                  />
+                  <div> {currentImageUser?.name}</div>
+                </AuthorInfo>
+              </StyledLink>
             )}
           </div>
           <Close image={closeIcon} onClick={toggleModal} />
