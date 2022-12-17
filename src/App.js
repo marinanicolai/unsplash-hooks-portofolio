@@ -13,6 +13,7 @@ import Photo from "./pages/Photo";
 import Intro from "./components/Intro";
 import Footer from "./components/Footer";
 import { ThemeContext } from "./components/Context/Context";
+import { CollectionContext } from "./components/Context/Collection";
 
 function App() {
   const [theme, SetTheme] = useState("dark");
@@ -21,27 +22,29 @@ function App() {
   };
   const [collection, setCollection] = useState([]);
   return (
-    <ThemeContext.Provider
-      value={{ theme, ToggleTheme, collection, setCollection }}
-    >
-      <div className="App" id={theme}>
-        <StorageProvider>
-          <BrowserRouter>
-            <Intro />
-            <Nav />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="search/:searchTerm" element={<Search />} />
-              <Route path="favorites" element={<Favorites />} />
-              <Route path="item/:id" element={<ImageItem />} />
-              <Route path="user/:username" element={<User />} />
-              <Route path="photo/:photoid" element={<Photo />} />
-            </Routes>
-          </BrowserRouter>
-        </StorageProvider>
-        <Footer />
-      </div>
-    </ThemeContext.Provider>
+    <CollectionContext.Provider value={{ collection, setCollection }}>
+      <ThemeContext.Provider
+        value={{ theme, ToggleTheme, collection, setCollection }}
+      >
+        <div className="App" id={theme}>
+          <StorageProvider>
+            <BrowserRouter>
+              <Intro />
+              <Nav />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="search/:searchTerm" element={<Search />} />
+                <Route path="favorites" element={<Favorites />} />
+                <Route path="item/:id" element={<ImageItem />} />
+                <Route path="user/:username" element={<User />} />
+                <Route path="photo/:photoid" element={<Photo />} />
+              </Routes>
+            </BrowserRouter>
+          </StorageProvider>
+          <Footer />
+        </div>
+      </ThemeContext.Provider>
+    </CollectionContext.Provider>
   );
 }
 

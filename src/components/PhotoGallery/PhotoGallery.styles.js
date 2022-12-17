@@ -75,7 +75,3 @@ export const Footer = styled.div`
   justify-content: space-between;
   padding-bottom: 10px;
 `;
-
-export const StyledRow = styled.div`
-  width: 95%;
-`;

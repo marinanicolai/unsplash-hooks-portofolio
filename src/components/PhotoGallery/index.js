@@ -4,7 +4,9 @@ import ImageItem from "../ImageItem";
 import "reactjs-popup/dist/index.css";
 import { StorageContext } from "../../providers";
 import { Link, useLocation } from "react-router-dom";
-
+import { BsFillBookmarkPlusFill } from "react-icons/bs";
+import { CollectionContext } from "../Context/Collection";
+import ImageModal from "../ImageModal";
 import {
   closeIcon,
   leftArrow,
@@ -22,7 +24,6 @@ import {
   Likes,
   LikedBox,
   Footer,
-  StyledRow,
 } from "./PhotoGallery.styles";
 
 const ImageGallery = ({ data }) => {
@@ -35,7 +36,11 @@ const ImageGallery = ({ data }) => {
   const isLastPhoto = data[arrayLength - 1]?.id === currentImage?.id;
   const currentImageUser = data?.[currentImageIndex]?.user;
   const hideUserLink = location.pathname?.includes("user");
-
+  const { collection, setCollection } = useContext(CollectionContext);
+  console.log("State" + collection);
+  const handleClick = (id) => {
+    setCollection((current) => [...current, id]);
+  };
   function toggleModal() {
     setCurrentImageIndex(null);
   }
@@ -78,14 +83,27 @@ const ImageGallery = ({ data }) => {
           {!isFirstPhoto && <Arrow direction={"left"} />}
           {data?.map((item, index) => {
             return currentImageIndex === index ? (
-              <Link key={item.id} to={`photo/${item.id}`} state={currentImage}>
-                <ImageItem
+              <div>
+                <Link
                   key={item.id}
-                  item={item}
-                  index={index}
-                  setCurrentImageIndex={setCurrentImageIndex}
+                  to={`photo/${item.id}`}
+                  state={currentImage}
+                >
+                  <ImageModal
+                    key={item.id}
+                    item={item}
+                    index={index}
+                    setCurrentImageIndex={setCurrentImageIndex}
+                  />
+                </Link>
+
+                <BsFillBookmarkPlusFill
+                  size={40}
+                  onClick={() => {
+                    handleClick(item);
+                  }}
                 />
-              </Link>
+              </div>
             ) : null;
           })}
           {!isLastPhoto && <Arrow direction={"right"} />}
@@ -108,22 +126,19 @@ const ImageGallery = ({ data }) => {
           )}
         </Footer>
       </Modal>
-      <StyledRow>
-        <div className="row">
-          {data?.map((item, index) => {
-            return (
-              <>
-                <ImageItem
-                  key={index}
-                  item={item}
-                  likes={item.likes}
-                  setCurrentImageIndex={setCurrentImageIndex}
-                />
-              </>
-            );
-          })}
-        </div>
-      </StyledRow>
+      <div className="row">
+        {data?.map((item, index) => {
+          return (
+            <ImageItem
+              key={item.id}
+              item={item}
+              index={index}
+              likes={item.likes}
+              setCurrentImageIndex={setCurrentImageIndex}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
