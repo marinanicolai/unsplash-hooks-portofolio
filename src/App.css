@@ -1,5 +1,5 @@
 * {
-  font-family: 'Exo', sans-serif;
+  font-family: "Schoolbell", arial, serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -16,32 +16,28 @@
   width: 50px;
   height: 50px;
 }
-.switch{
+.switch {
   margin-left: 30px;
   display: flex;
-  padding:10px;
+  padding: 10px;
 }
-#dark{
-  background-color: black;
-  color:white;
-}
-#dark .switch label{
+#dark {
+  background-color: #24292f;
   color: white;
-  margin:auto;
+}
+#dark .switch label {
+  color: white;
+  margin: auto;
 }
 
 span.theme {
-  padding:10px;
+  padding: 10px;
 }
 
-.row{
+.row {
   @media (max-width: 375px) {
-    width:90%;
-    padding:0;
-    margin:0;
+    width: 90%;
+    padding: 0;
+    margin: 0;
   }
-  
 }
-
-
-

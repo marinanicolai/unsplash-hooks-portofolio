@@ -5,14 +5,22 @@ import SearchBar from "../SearchBar";
 import { Link } from "react-router-dom";
 import {
   Navigation,
-  CameraImage,
   HeartImage,
   TextHeart,
   StyledLink,
   Switch,
   Image,
 } from "./Nav.styles";
-import { logo, heartIcon } from "../../utils/resources/index";
+import {
+  logo,
+  heartIcon,
+  camera,
+  cameraWhite,
+  whiteHeart,
+  blackHeart,
+  blackMoon,
+  greySun,
+} from "../../utils/resources/index";
 import { ThemeContext } from "../Context/Context";
 import ReactSwitch from "react-switch";
 
@@ -22,25 +30,29 @@ const Nav = () => {
   return (
     <Navigation>
       <Link to="/">
-        {/* <CameraImage> */}
-        <Image alt="camera-img" className="camera-image" src={logo} />
-        {/* </CameraImage> */}
+        {theme === "light" ? (
+          <Image alt="camera-img" className="camera-image" src={camera} />
+        ) : (
+          <Image alt="camera-img" className="camera-image" src={cameraWhite} />
+        )}
       </Link>
       <SearchBar />
-
       <StyledLink to="/favorites">
         <HeartImage>
-          <img alt="camera-img" className="camera-image" src={heartIcon} />
-          <TextHeart>Saved</TextHeart>
+          {theme === "light" ? (
+            <Image alt="camera-img" className="camera-image" src={blackHeart} />
+          ) : (
+            <Image alt="camera-img" className="camera-image" src={whiteHeart} />
+          )}
         </HeartImage>
       </StyledLink>
       {/* <p>Saved</p> */}
       <Switch>
         <label>
           {theme === "light" ? (
-            <span className="theme">🌒</span>
+            <Image alt="camera-img" className="camera-image" src={blackMoon} />
           ) : (
-            <span className="theme">☀️</span>
+            <Image alt="camera-img" className="camera-image" src={greySun} />
           )}
         </label>
         <ReactSwitch

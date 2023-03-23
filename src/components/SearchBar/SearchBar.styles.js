@@ -8,12 +8,16 @@ export const SearchIcon = styled.div`
 
 export const SearchBox = styled.input`
   @media (max-width: 570px) {
-    width: 200px;
+    width: 300px;
   }
-  height: 5vh;
+  /* height: 5vh; */
   border: none;
   font-size: 18px;
-  padding-left: 30px;
+  /* padding-left: 30px; */
+  ::placeholder {
+    padding-left: 20px;
+    background-color: #24292f;
+  }
 `;
 
 export const Box = styled.div`
@@ -44,4 +48,9 @@ export const Button = styled.button`
   margin-right: 15px;
   margin-left: 15px;
   background-color: #32a8a4;
+`;
+
+export const StyledForm = styled.form`
+  border: dotted 1px grey;
+  border-radius: 15px;
 `;
