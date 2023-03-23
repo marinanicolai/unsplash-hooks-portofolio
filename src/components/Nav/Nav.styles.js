@@ -22,8 +22,10 @@ export const CameraImage = styled.div`
 export const Image = styled.img`
   justify-content: center;
   padding: 15px;
-  max-height: 80%;
-  border-radius: 7px;
+  /* max-height: 80%; */
+  width: 75px;
+  height: 75px;
+  border-radius: 20px;
 `;
 
 export const HeartImage = styled.div`

@@ -10,6 +10,7 @@ import {
   TextHeart,
   StyledLink,
   Switch,
+  Image,
 } from "./Nav.styles";
 import { logo, heartIcon } from "../../utils/resources/index";
 import { ThemeContext } from "../Context/Context";
@@ -21,9 +22,9 @@ const Nav = () => {
   return (
     <Navigation>
       <Link to="/">
-        <CameraImage>
-          <img alt="camera-img" className="camera-image" src={logo} />
-        </CameraImage>
+        {/* <CameraImage> */}
+        <Image alt="camera-img" className="camera-image" src={logo} />
+        {/* </CameraImage> */}
       </Link>
       <SearchBar />
 
