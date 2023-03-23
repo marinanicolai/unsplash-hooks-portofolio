@@ -23,6 +23,7 @@ export const Image = styled.img`
   justify-content: center;
   padding: 15px;
   max-height: 80%;
+  border-radius: 7px;
 `;
 
 export const HeartImage = styled.div`
