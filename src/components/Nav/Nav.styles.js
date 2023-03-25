@@ -51,3 +51,15 @@ export const Switch = styled.div`
     width: 570px;
   } */
 `;
+
+export const BtnContainer = styled.div`
+  padding: 50px;
+  margin: 15px;
+`;
+
+export const StyledBtn = styled.button`
+  background-color: inherit;
+  border: dotted grey 0.5px;
+  border-radius: 15px;
+  opacity: 1;
+`;

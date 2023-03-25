@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-
 import SearchBar from "../SearchBar";
+import Toggle from "../Toggle/index";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+
 import {
   Navigation,
   HeartImage,
@@ -10,6 +18,8 @@ import {
   StyledLink,
   Switch,
   Image,
+  BtnContainer,
+  StyledBtn,
 } from "./Nav.styles";
 import {
   logo,
@@ -24,45 +34,81 @@ import {
 import { ThemeContext } from "../Context/Context";
 import ReactSwitch from "react-switch";
 
-const Nav = () => {
+const NavComponent = () => {
   const { theme, ToggleTheme } = useContext(ThemeContext);
+  const formRef = useRef();
+  const [searchText, setSearchText] = useState(null);
 
+  const navigate = useNavigate();
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/search/${searchText}`);
+  };
   return (
-    <Navigation>
-      <Link to="/">
-        {theme === "light" ? (
-          <Image alt="camera-img" className="camera-image" src={camera} />
-        ) : (
-          <Image alt="camera-img" className="camera-image" src={cameraWhite} />
-        )}
-      </Link>
-      <SearchBar />
-      <StyledLink to="/favorites">
-        <HeartImage>
-          {theme === "light" ? (
-            <Image alt="camera-img" className="camera-image" src={blackHeart} />
-          ) : (
-            <Image alt="camera-img" className="camera-image" src={whiteHeart} />
-          )}
-        </HeartImage>
-      </StyledLink>
-      {/* <p>Saved</p> */}
-      <Switch>
-        <label>
-          {theme === "light" ? (
-            <Image alt="camera-img" className="camera-image" src={blackMoon} />
-          ) : (
-            <Image alt="camera-img" className="camera-image" src={greySun} />
-          )}
-        </label>
-        <ReactSwitch
-          onChange={ToggleTheme}
-          checked={theme === "dark"}
-          onColor="#808080"
-        />
-      </Switch>
-    </Navigation>
+    <>
+      <Navbar expand="lg">
+        <Container fluid>
+          <Navbar.Brand href="#">
+            {" "}
+            <Link to="/">
+              {theme === "light" ? (
+                <Image alt="camera-img" className="camera-image" src={camera} />
+              ) : (
+                <Image
+                  alt="camera-img"
+                  className="camera-image"
+                  src={cameraWhite}
+                />
+              )}
+            </Link>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: "100px" }}
+              navbarScroll
+            >
+              <Nav.Link to="/">Home</Nav.Link>
+              <Nav.Link to="/favorites">Favorite</Nav.Link>
+            </Nav>
+            <Form className="d-flex" onSubmit={handleFormSubmit}>
+              <Form.Control
+                type="search"
+                placeholder="Search high-resolution images"
+                className="me-2"
+                aria-label="Search"
+                onChange={(e) => setSearchText(e.target.value)}
+              />
+              <Button variant="secondary" type="submit">
+                Search
+              </Button>
+            </Form>
+            <Navbar.Brand href="#">
+              {" "}
+              <Link to="/">
+                {theme === "light" ? (
+                  <Image
+                    alt="camera-img"
+                    className="camera-image"
+                    src={blackMoon}
+                    onClick={ToggleTheme}
+                  />
+                ) : (
+                  <Image
+                    alt="camera-img"
+                    className="camera-image"
+                    src={greySun}
+                    onClick={ToggleTheme}
+                  />
+                )}
+              </Link>
+            </Navbar.Brand>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
   );
 };
 
-export default Nav;
+export default NavComponent;
