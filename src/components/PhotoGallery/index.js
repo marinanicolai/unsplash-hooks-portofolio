@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import Modal from "reactjs-popup";
+import { Box } from "@mantine/core";
+
 import ImageItem from "../ImageItem";
 import "reactjs-popup/dist/index.css";
 import { StorageContext } from "../../providers";
@@ -131,7 +133,17 @@ const ImageGallery = ({ data }) => {
           )}
         </Footer>
       </Modal>
-      <div className="row">
+      <Box
+        sx={() => {
+          return {
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "1rem",
+            maxWidth: "1000px",
+            margin: "0 auto",
+          };
+        }}
+      >
         {data?.map((item, index) => {
           return (
             <ImageItem
@@ -143,7 +155,7 @@ const ImageGallery = ({ data }) => {
             />
           );
         })}
-      </div>
+      </Box>
     </div>
   );
 };

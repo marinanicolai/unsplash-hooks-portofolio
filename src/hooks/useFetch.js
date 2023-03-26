@@ -21,7 +21,6 @@ export const useFetch = (url, params) => {
   useEffect(() => {
     setLoading(true);
     fetch();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetch = async () => {

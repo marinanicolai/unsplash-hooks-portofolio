@@ -1,17 +1,23 @@
 import React from "react";
+import { Box } from "@mantine/core";
 import { Image } from "./ImageItem.styles";
 
 const Item = ({ item, index, likes, setCurrentImageIndex }) => {
   return (
-    <div className="col-lg-4 col-md-12 mb-4 mb-lg-0">
+    <Box
+      sx={(theme) => ({
+        borderRadius: theme.radius.md,
+        cursor: "pointer",
+      })}
+    >
       <Image
         key={item.id}
         src={item.urls.small}
         alt="sample"
-        className="img-responsive w-100"
+        style={{ width: "100%", height: "auto !important" }}
         onClick={() => setCurrentImageIndex(index)}
       />
-    </div>
+    </Box>
   );
 };
 export default Item;
