@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "./ImageModal.styles";
+import { Image } from "@mantine/core";
 
 const ImageModal = ({ item, index, likes, setCurrentImageIndex }) => {
   return (

@@ -1,6 +1,10 @@
-import React, { useContext, useState } from "react";
-import Modal from "reactjs-popup";
-import { Box } from "@mantine/core";
+import React, { useContext, useState, useCallback } from "react";
+import { useDisclosure } from "@mantine/hooks";
+import { Modal, Group, Box, Progress, rem } from "@mantine/core";
+import { Carousel } from "@mantine/carousel";
+import Slider from "react-slick";
+
+import { IconArrowRight, IconArrowLeft } from "@tabler/icons-react";
 
 import ImageItem from "../ImageItem";
 import "reactjs-popup/dist/index.css";
@@ -42,7 +46,12 @@ const ImageGallery = ({ data }) => {
   const currentImageUser = data?.[currentImageIndex]?.user;
   const hideUserLink = location.pathname?.includes("user");
   const { collection, setCollection } = useContext(CollectionContext);
-  console.log("State" + collection);
+  const [opened, { open, close }] = useDisclosure(false);
+
+  console.log("State");
+  console.log(collection);
+  console.log("this is the data");
+  console.log({ data });
   const handleClick = (id) => {
     setCollection((current) => [...current, id]);
   };
@@ -59,15 +68,25 @@ const ImageGallery = ({ data }) => {
         ? setCurrentImageIndex(currentImageIndex - 1)
         : setCurrentImageIndex(currentImageIndex + 1);
     };
-    const image = direction === "left" ? leftArrow : rightArrow;
-    return <StyledArrow image={image} onClick={clickHandler} />;
+    const image =
+      direction === "left" ? (
+        <IconArrowRight size={16} />
+      ) : (
+        <IconArrowLeft size={16} />
+      );
+    return <div image={image} onClick={clickHandler} />;
   };
   return (
     <div>
       <Modal
-        closeOnDocumentClick
-        open={currentImageIndex !== null}
-        onClose={toggleModal}
+        opened={opened}
+        onClose={close}
+        centered
+        transitionProps={{
+          transition: "fade",
+          duration: 600,
+          timingFunction: "linear",
+        }}
       >
         <Header>
           <div>
@@ -79,14 +98,14 @@ const ImageGallery = ({ data }) => {
                     src={currentImageUser?.profile_image.small}
                     alt="profile"
                   />
+
                   <div> {currentImageUser?.name}</div>
                 </AuthorInfo>
               </StyledLink>
             )}
           </div>
-          <Close image={closeIcon} onClick={toggleModal} />
         </Header>
-        <Content>
+        <Carousel maw={320} mx="auto" height={180}>
           {!isFirstPhoto && <Arrow direction={"left"} />}
           {data?.map((item, index) => {
             return currentImageIndex === index ? (
@@ -104,17 +123,17 @@ const ImageGallery = ({ data }) => {
                   />
                 </Link>
 
-                <BsFillBookmarkPlusFill
+                {/* <BsFillBookmarkPlusFill
                   size={40}
                   onClick={() => {
                     handleClick(item);
                   }}
-                />
+                /> */}
               </div>
             ) : null;
           })}
           {!isLastPhoto && <Arrow direction={"right"} />}
-        </Content>
+        </Carousel>
         <Footer>
           <LikedBox>
             <Likes image={likedIcon} />
@@ -133,6 +152,7 @@ const ImageGallery = ({ data }) => {
           )}
         </Footer>
       </Modal>
+
       <Box
         sx={() => {
           return {
@@ -146,13 +166,18 @@ const ImageGallery = ({ data }) => {
       >
         {data?.map((item, index) => {
           return (
-            <ImageItem
-              key={item.id}
-              item={item}
-              index={index}
-              likes={item.likes}
-              setCurrentImageIndex={setCurrentImageIndex}
-            />
+            <Group position="center">
+              <div onClick={open}>
+                <p>this is an item</p>
+                <ImageItem
+                  key={item.id}
+                  item={item}
+                  index={index}
+                  likes={item.likes}
+                  setCurrentImageIndex={setCurrentImageIndex}
+                />
+              </div>
+            </Group>
           );
         })}
       </Box>
