@@ -168,7 +168,6 @@ const ImageGallery = ({ data }) => {
           return (
             <Group position="center">
               <div onClick={open}>
-                <p>this is an item</p>
                 <ImageItem
                   key={item.id}
                   item={item}
