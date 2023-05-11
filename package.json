@@ -9,6 +9,7 @@
     "@mantine/form": "^6.0.4",
     "@mantine/hooks": "^6.0.4",
     "@mantine/utils": "^6.0.5",
+    "@primer/octicons-react": "^19.1.0",
     "@tabler/icons-react": "^2.11.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -17,6 +18,7 @@
     "axios": "^0.27.2",
     "dotenv": "^16.0.0",
     "embla-carousel-react": "^7.1.0",
+    "octicons-react": "^1.0.9",
     "rc-slider": "^10.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -50,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
   }
 }

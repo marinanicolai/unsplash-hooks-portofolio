@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MantineProvider, ColorSchemeProvider } from "@mantine/core";
-import { AppShell, Header } from "@mantine/core";
+import { AppShell, Header, Divider, Flex } from "@mantine/core";
 
 import "./App.css";
 
@@ -40,8 +40,15 @@ function App() {
               <AppShell
                 padding="md"
                 header={
-                  <Header height={100} p="xs">
-                    <AppHeader />
+                  <Header
+                    className="inline-block p-6 bg-gradient-to-tr from-green-400 to-blue-400"
+                    height={100}
+                    p="xs"
+                  >
+                    <Flex min={50} align="center" justify="center">
+                      <p>Search for any high-resolution image</p>
+                    </Flex>
+                    <AppHeader class="inline-block p-6 bg-gradient-to-tr from-green-400 to-blue-400" />
                   </Header>
                 }
                 styles={(theme) => ({

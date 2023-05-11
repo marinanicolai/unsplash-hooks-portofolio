@@ -9,6 +9,7 @@ import {
   Group,
   ActionIcon,
   useMantineColorScheme,
+  Divider,
   rem,
 } from "@mantine/core";
 import { IconSun, IconMoonStars } from "@tabler/icons-react";
@@ -28,6 +29,9 @@ import {
   heartIcon,
   camera,
   cameraWhite,
+  unsplashLogo,
+  Logo,
+  LogoBlack,
   whiteHeart,
   blackHeart,
   blackMoon,
@@ -43,6 +47,11 @@ const AppHeader = () => {
     <>
       <Group position="apart">
         <Box display="flex">
+          {colorScheme === "dark" ? (
+            <img className="logo" alt="logo-img" src={LogoBlack} />
+          ) : (
+            <img className="logo" alt="logo-img" src={Logo} />
+          )}
           <Button component={Link} to="/" mr={8}>
             Home
           </Button>

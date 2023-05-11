@@ -19,6 +19,9 @@ import whiteHeart from "./../resources/white_heart.png";
 import blackHeart from "./../resources/black_heart.png";
 import greySun from "./../resources/grey_sun.png";
 import blackMoon from "./../resources/black_moon.png";
+import unsplashLogo from "./../resources/logo-unsplashify.png";
+import Logo from "./../resources/Logo.png";
+import LogoBlack from "./../resources/logoBlack.png";
 
 export {
   closeIcon,
@@ -41,5 +44,8 @@ export {
   whiteHeart,
   blackHeart,
   greySun,
-  blackMoon
+  blackMoon,
+  unsplashLogo,
+  Logo,
+  LogoBlack,
 };

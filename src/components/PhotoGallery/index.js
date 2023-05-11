@@ -166,7 +166,7 @@ const ImageGallery = ({ data }) => {
       >
         {data?.map((item, index) => {
           return (
-            <Group position="center">
+            <Group key={item.id} position="center">
               <div onClick={open}>
                 <ImageItem
                   key={item.id}
