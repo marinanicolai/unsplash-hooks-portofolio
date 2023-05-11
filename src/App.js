@@ -15,7 +15,10 @@ import User from "./pages/User";
 import Photo from "./pages/Photo";
 import Intro from "./components/Intro";
 import Footer from "./components/Footer";
+import Sidebar from "./components/Sidebar";
 import { ThemeContext } from "./components/Context/Context";
+import { SidebarProvider } from "./hooks/context/Sidebar";
+
 import { CollectionContext } from "./components/Context/Collection";
 
 function App() {
@@ -37,39 +40,42 @@ function App() {
         <CollectionContext.Provider value={{ collection, setCollection }}>
           <StorageProvider>
             <BrowserRouter>
-              <AppShell
-                padding="md"
-                header={
-                  <Header
-                    className="inline-block p-6 bg-gradient-to-tr from-green-400 to-blue-400"
-                    height={100}
-                    p="xs"
-                  >
-                    <Flex min={50} align="center" justify="center">
-                      <p>Search for any high-resolution image</p>
-                    </Flex>
-                    <AppHeader class="inline-block p-6 bg-gradient-to-tr from-green-400 to-blue-400" />
-                  </Header>
-                }
-                styles={(theme) => ({
-                  main: {
-                    backgroundColor:
-                      theme.colorScheme === "dark"
-                        ? theme.colors.dark[8]
-                        : theme.colors.gray[0],
-                  },
-                })}
-              >
-                <Intro />
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="search/:searchTerm" element={<Search />} />
-                  <Route path="favorites" element={<Favorites />} />
-                  <Route path="item/:id" element={<ImageItem />} />
-                  <Route path="user/:username" element={<User />} />
-                  <Route path="photo/:photoid" element={<Photo />} />
-                </Routes>
-              </AppShell>
+              <SidebarProvider>
+                <AppShell
+                  padding="md"
+                  navbar={<Sidebar />}
+                  header={
+                    <Header
+                      className="inline-block p-6 bg-gradient-to-tr from-green-400 to-blue-400"
+                      height={100}
+                      p="xs"
+                    >
+                      <Flex min={50} align="center" justify="center">
+                        <p>Search for any high-resolution image</p>
+                      </Flex>
+                      <AppHeader class="inline-block p-6 bg-gradient-to-tr from-green-400 to-blue-400" />
+                    </Header>
+                  }
+                  styles={(theme) => ({
+                    main: {
+                      backgroundColor:
+                        theme.colorScheme === "dark"
+                          ? theme.colors.dark[8]
+                          : theme.colors.gray[0],
+                    },
+                  })}
+                >
+                  <Intro />
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="search/:searchTerm" element={<Search />} />
+                    <Route path="favorites" element={<Favorites />} />
+                    <Route path="item/:id" element={<ImageItem />} />
+                    <Route path="user/:username" element={<User />} />
+                    <Route path="photo/:photoid" element={<Photo />} />
+                  </Routes>
+                </AppShell>
+              </SidebarProvider>
             </BrowserRouter>
           </StorageProvider>
           <Footer />

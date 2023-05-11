@@ -9,7 +9,7 @@ import {
   Group,
   ActionIcon,
   useMantineColorScheme,
-  Divider,
+  Tooltip,
   rem,
 } from "@mantine/core";
 import { IconSun, IconMoonStars } from "@tabler/icons-react";
@@ -24,6 +24,7 @@ import {
   BtnContainer,
   StyledBtn,
 } from "./Nav/Nav.styles";
+import { SignInIcon, SignOutIcon } from "@primer/octicons-react";
 import {
   logo,
   heartIcon,
@@ -37,12 +38,12 @@ import {
   blackMoon,
   greySun,
 } from "../utils/resources/index";
-import { ThemeContext } from "./Context/Context";
+import { useSidebar } from "../../src/hooks/context/Sidebar";
 import SearchForm from "./SearchForm";
 
 const AppHeader = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-
+  const { isOpen, setSidebar } = useSidebar();
   return (
     <>
       <Group position="apart">
@@ -65,16 +66,27 @@ const AppHeader = () => {
         ) : (
           <Image alt="camera-img" className="camera-image" src={camera} />
         )}
+
+        <ActionIcon variant="default" onClick={() => setSidebar?.()}>
+          {isOpen ? <SignInIcon /> : <SignOutIcon />}
+        </ActionIcon>
         <ActionIcon
           variant="default"
           onClick={() => toggleColorScheme()}
           size={30}
         >
-          {colorScheme === "dark" ? (
-            <IconSun size="1rem" />
-          ) : (
-            <IconMoonStars size="1rem" />
-          )}
+          <Tooltip
+            withArrow
+            transition="fade"
+            transitionDuration={200}
+            label="Ctrl + J"
+          >
+            {colorScheme === "dark" ? (
+              <IconSun size="1rem" />
+            ) : (
+              <IconMoonStars size="1rem" />
+            )}
+          </Tooltip>
         </ActionIcon>
       </Group>
 
