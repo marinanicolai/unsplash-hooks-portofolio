@@ -1,39 +1,17 @@
 import React, { useContext, useState, useCallback } from "react";
 import { useDisclosure } from "@mantine/hooks";
-import { Modal, Group, Box, Progress, rem } from "@mantine/core";
+import { Modal, Box, Progress, rem } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
-import Slider from "react-slick";
-
 import { IconArrowRight, IconArrowLeft } from "@tabler/icons-react";
-
 import ImageItem from "../ImageItem";
 import "reactjs-popup/dist/index.css";
 import { StorageContext } from "../../providers";
 import { Link, useLocation } from "react-router-dom";
-import { BsFillBookmarkPlusFill } from "react-icons/bs";
 import { CollectionContext } from "../Context/Collection";
 import ImageModal from "../ImageModal";
-import {
-  closeIcon,
-  leftArrow,
-  rightArrow,
-  favoriteIcon,
-  savedFavoriteIcon,
-  likedIcon,
-} from "../../utils/resources/index";
-import {
-  Close,
-  StyledArrow,
-  Content,
-  Header,
-  SavedImg,
-  Likes,
-  LikedBox,
-  Footer,
-  AuthorInfo,
-  StyledLink,
-} from "./PhotoGallery.styles";
-//import { AuthorInfo } from "../../pages/User/User.styles";
+import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
+
+import { Header, AuthorInfo, StyledLink } from "./PhotoGallery.styles";
 
 const ImageGallery = ({ data }) => {
   const location = useLocation();
@@ -48,10 +26,6 @@ const ImageGallery = ({ data }) => {
   const { collection, setCollection } = useContext(CollectionContext);
   const [opened, { open, close }] = useDisclosure(false);
 
-  console.log("State");
-  console.log(collection);
-  console.log("this is the data");
-  console.log({ data });
   const handleClick = (id) => {
     setCollection((current) => [...current, id]);
   };
@@ -88,71 +62,31 @@ const ImageGallery = ({ data }) => {
           timingFunction: "linear",
         }}
       >
-        <Header>
-          <div>
-            {!hideUserLink && (
-              <StyledLink to={`user/${currentImageUser?.username}`}>
-                <AuthorInfo>
-                  <img
-                    className="profile"
-                    src={currentImageUser?.profile_image.small}
-                    alt="profile"
-                  />
+        <Carousel maw={350} mx="auto" height={380}>
+          <Card shadow="sm" padding="lg" radius="md" withBorder>
+            <Card.Section>
+              <Image src={data.urls} height={160} alt="image" />
+            </Card.Section>
 
-                  <div> {currentImageUser?.name}</div>
-                </AuthorInfo>
-              </StyledLink>
-            )}
-          </div>
-        </Header>
-        <Carousel maw={320} mx="auto" height={180}>
-          {!isFirstPhoto && <Arrow direction={"left"} />}
-          {data?.map((item, index) => {
-            return currentImageIndex === index ? (
-              <div>
-                <Link
-                  key={item.id}
-                  to={`photo/${item.id}`}
-                  state={currentImage}
-                >
-                  <ImageModal
-                    key={item.id}
-                    item={item}
-                    index={index}
-                    setCurrentImageIndex={setCurrentImageIndex}
-                  />
-                </Link>
+            <Group position="apart" mt="md" mb="xs">
+              <Text weight={500}>Name/Tags</Text>
+              <Text weight={500}>Artist</Text>
+              <Badge color="pink" variant="light">
+                Likes
+              </Badge>
+            </Group>
 
-                {/* <BsFillBookmarkPlusFill
-                  size={40}
-                  onClick={() => {
-                    handleClick(item);
-                  }}
-                /> */}
-              </div>
-            ) : null;
-          })}
-          {!isLastPhoto && <Arrow direction={"right"} />}
+            <Text size="sm" color="dimmed">
+              description of the images goes here -"a woman is walking down a
+              set of stairs"
+            </Text>
+
+            <Button variant="light" color="blue" fullWidth mt="md" radius="md">
+              More images by this artist
+            </Button>
+          </Card>
         </Carousel>
-        <Footer>
-          <LikedBox>
-            <Likes image={likedIcon} />
-            {data?.[currentImageIndex]?.likes}
-          </LikedBox>
-          {isCurrentImageSaved ? (
-            <SavedImg
-              image={savedFavoriteIcon}
-              onClick={() => onUnFav?.(currentImage)}
-            />
-          ) : (
-            <SavedImg
-              image={favoriteIcon}
-              onClick={() => onFav(currentImage)}
-            />
-          )}
-        </Footer>
       </Modal>
-
       <Box
         sx={() => {
           return {

@@ -1,6 +1,6 @@
 import React from "react";
-import { Box } from "@mantine/core";
-import { Image } from "./ImageItem.styles";
+import { Box, Card, Image, Text, Badge, Button, Group } from "@mantine/core";
+//import { Image } from "./ImageItem.styles";
 
 const Item = ({ item, index, likes, setCurrentImageIndex }) => {
   return (

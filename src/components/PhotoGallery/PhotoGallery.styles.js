@@ -70,12 +70,12 @@ export const LikedBox = styled.div`
   width: 60px;
 `;
 
-export const Footer = styled.div`
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 10px;
-`;
+// export const Footer = styled.div`
+//   margin-top: 20px;
+//   display: flex;
+//   justify-content: space-between;
+//   padding-bottom: 10px;
+// `;
 
 export const AuthorInfo = styled.div`
   display: flex;
