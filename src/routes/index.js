@@ -1,7 +1,7 @@
 import Home from "../pages/Home";
 import Favorites from "../pages/Favorites";
 
-import { HomeIcon, BellIcon, HeartIcon } from "@primer/octicons-react";
+import { HomeIcon, HeartIcon } from "@primer/octicons-react";
 
 const routes = [
   {

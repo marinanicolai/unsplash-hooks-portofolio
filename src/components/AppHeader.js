@@ -53,36 +53,36 @@ const AppHeader = () => {
           ) : (
             <img className="logo" alt="logo-img" src={Logo} />
           )}
-          <Button component={Link} to="/" mr={8}>
-            Home
-          </Button>
-          <Button component={Link} to="/favorites">
-            Favorite
-          </Button>
-          <SearchForm />
         </Box>
-        {colorScheme === "dark" ? (
-          <Image alt="camera-img" className="camera-image" src={cameraWhite} />
-        ) : (
-          <Image alt="camera-img" className="camera-image" src={camera} />
-        )}
+        <SearchForm />
+        <Group spacing="xs">
+          {colorScheme === "dark" ? (
+            <Image
+              alt="camera-img"
+              className="camera-image"
+              src={cameraWhite}
+            />
+          ) : (
+            <Image alt="camera-img" className="camera-image" src={camera} />
+          )}
 
-        <ActionIcon variant="default" onClick={() => setSidebar?.()}>
-          {isOpen ? <SignInIcon /> : <SignOutIcon />}
-        </ActionIcon>
-        <ActionIcon
-          variant="default"
-          onClick={() => toggleColorScheme()}
-          size={30}
-        >
-          <Tooltip withArrow transition="fade" label="Ctrl + J">
-            {colorScheme === "dark" ? (
-              <IconSun size="1rem" />
-            ) : (
-              <IconMoonStars size="1rem" />
-            )}
-          </Tooltip>
-        </ActionIcon>
+          <ActionIcon variant="default" onClick={() => setSidebar?.()}>
+            {isOpen ? <SignInIcon /> : <SignOutIcon />}
+          </ActionIcon>
+          <ActionIcon
+            variant="default"
+            onClick={() => toggleColorScheme()}
+            size={30}
+          >
+            <Tooltip withArrow transition="fade" label="Ctrl + J">
+              {colorScheme === "dark" ? (
+                <IconSun size="1rem" />
+              ) : (
+                <IconMoonStars size="1rem" />
+              )}
+            </Tooltip>
+          </ActionIcon>
+        </Group>
       </Group>
 
       {/* <Form className="d-flex" onSubmit={handleFormSubmit}>

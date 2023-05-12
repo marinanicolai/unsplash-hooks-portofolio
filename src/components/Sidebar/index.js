@@ -7,7 +7,7 @@ export default function Sidebar() {
 
   return (
     <Navbar width={{ base: isOpen ? 250 : 57 }} height="calc(100vh - 60px)">
-      this is sidedbar
+     
       <MainLinks />
     </Navbar>
   );

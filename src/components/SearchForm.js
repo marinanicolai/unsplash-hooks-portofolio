@@ -13,24 +13,22 @@ function SearchForm() {
   const handleSubmit = (values) => {
     navigate(`/search/${values?.search}`);
     setValue("");
-    console.log("Form reset"); // Debug statement
-    console.log("Input value:"); // Debug statement
   };
 
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>
-      <Group position="right" ml={50}>
-        <PaperWrapper>
-          <Input
-            icon={<SearchIcon size={16} />}
-            value={value}
-            width={300}
-            aria-label="Search"
-            placeholder="Search high-resolution images"
-            {...form.getInputProps("search")}
-          />
-        </PaperWrapper>
-      </Group>
+      {/* <Group position="right" ml={50}> */}
+      <PaperWrapper>
+        <Input
+          icon={<SearchIcon size={16} />}
+          value={value}
+          width="600px"
+          aria-label="Search"
+          placeholder="Search high-resolution images"
+          {...form.getInputProps("search")}
+        />
+      </PaperWrapper>
+      {/* </Group> */}
     </form>
   );
 }
