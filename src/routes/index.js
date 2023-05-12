@@ -7,14 +7,14 @@ const routes = [
   {
     name: "Home",
     path: "/",
-    element: HomePage,
+    element: Home,
     icon: HomeIcon,
     breadcrumb: "Home",
   },
   {
     name: "Favorites",
     path: "/favorites",
-    element: FavoritesPage,
+    element: Favorites,
     icon: HeartIcon,
     color: "lime",
   },

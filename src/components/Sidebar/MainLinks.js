@@ -1,10 +1,15 @@
 import React from "react";
+import routes from "./../../routes";
 import { useSidebar } from "../../hooks/context/Sidebar";
 
-function MainLinks() {
-
-    const {isOpen} = useSidebar()
-  return <div>{isOpen && <p>MainLinks</p> }</div>;
+function MainLink() {
+  const { isOpen } = useSidebar();
+  return <div>{isOpen && <p>MainLinks</p>}</div>;
 }
 
-export default MainLinks;
+function MainLinksContainer() {
+  const links = routes.map((link) => <MainLink {...link} key={link.name} />);
+  return <div>{links}</div>;
+}
+
+export default MainLinksContainer;

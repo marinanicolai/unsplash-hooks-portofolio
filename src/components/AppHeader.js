@@ -75,12 +75,7 @@ const AppHeader = () => {
           onClick={() => toggleColorScheme()}
           size={30}
         >
-          <Tooltip
-            withArrow
-            transition="fade"
-            transitionDuration={200}
-            label="Ctrl + J"
-          >
+          <Tooltip withArrow transition="fade" label="Ctrl + J">
             {colorScheme === "dark" ? (
               <IconSun size="1rem" />
             ) : (
