@@ -1,0 +1,27 @@
+Progress: resolved 0, reused 1, downloaded 0, added 0
+Progress: resolved 39, reused 39, downloaded 0, added 0
+Progress: resolved 176, reused 175, downloaded 0, added 0
+Progress: resolved 206, reused 205, downloaded 0, added 0
+Progress: resolved 345, reused 344, downloaded 0, added 0
+ WARN  deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
+Progress: resolved 609, reused 608, downloaded 0, added 0
+ WARN  deprecated rollup-plugin-terser@7.0.2: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
+ WARN  deprecated w3c-hr-time@1.0.2: Use your platform's native performance.now() and performance.timeOrigin.
+Progress: resolved 894, reused 893, downloaded 0, added 0
+Already up to date
+
+ WARN  Issues with peer dependencies found
+.
+├─┬ @babel/plugin-syntax-flow 7.21.4
+│ └── ✕ missing peer @babel/core@^7.0.0-0
+├─┬ @babel/plugin-transform-react-jsx 7.21.5
+│ ├── ✕ missing peer @babel/core@^7.0.0-0
+│ └─┬ @babel/plugin-syntax-jsx 7.21.4
+│   └── ✕ missing peer @babel/core@^7.0.0-0
+└─┬ octicons-react 1.0.9
+  └── ✕ unmet peer react@^17.0.2: found 18.2.0
+Peer dependencies that should be installed:
+  @babel/core@">=7.0.0-0 <8.0.0"
+
+Done in 7.5s
+Progress: resolved 894, reused 893, downloaded 0, added 0, done
