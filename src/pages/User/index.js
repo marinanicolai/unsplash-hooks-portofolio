@@ -19,6 +19,7 @@ const User = () => {
   const { data: statistics } = useFetch(
     `/users/${params?.username}/statistics`
   );
+  console.log("this is params" + params);
   return (
     <>
       <div>

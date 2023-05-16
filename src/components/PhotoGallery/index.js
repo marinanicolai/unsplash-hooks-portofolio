@@ -8,6 +8,7 @@ import "reactjs-popup/dist/index.css";
 import { StorageContext } from "../../providers";
 import { Link, useLocation } from "react-router-dom";
 import { CollectionContext } from "../Context/Collection";
+import Photo from "../../pages/Photo";
 import ImageModal from "../ImageModal";
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 
@@ -62,31 +63,21 @@ const ImageGallery = ({ data }) => {
           timingFunction: "linear",
         }}
       >
-        <Carousel maw={350} mx="auto" height={380}>
-          <Card shadow="sm" padding="lg" radius="md" withBorder>
-            <Card.Section>
-              <Image src={data.urls} height={160} alt="image" />
-            </Card.Section>
-
-            <Group position="apart" mt="md" mb="xs">
-              <Text weight={500}>Name/Tags</Text>
-              <Text weight={500}>Artist</Text>
-              <Badge color="pink" variant="light">
-                Likes
-              </Badge>
-            </Group>
-
-            <Text size="sm" color="dimmed">
-              description of the images goes here -"a woman is walking down a
-              set of stairs"
-            </Text>
-
-            <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-              More images by this artist
-            </Button>
-          </Card>
-        </Carousel>
+        {data?.map((item, index) => {
+          return currentImageIndex === index ? (
+            <Link key={item.id} to={`photo/${item.id}`}>
+              {" "}
+              <ImageItem
+                key={item.id}
+                item={item}
+                index={index}
+                setCurrentImageIndex={setCurrentImageIndex}
+              />
+            </Link>
+          ) : null;
+        })}
       </Modal>
+
       <Box
         sx={() => {
           return {

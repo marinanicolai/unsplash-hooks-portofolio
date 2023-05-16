@@ -73,6 +73,7 @@ function App() {
                     <Route path="item/:id" element={<ImageItem />} />
                     <Route path="user/:username" element={<User />} />
                     <Route path="photo/:photoid" element={<Photo />} />
+                    
                   </Routes>
                 </AppShell>
               </SidebarProvider>
