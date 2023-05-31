@@ -18,7 +18,7 @@ import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
 import { ThemeContext } from "./components/Context/Context";
 import { SidebarProvider } from "./hooks/context/Sidebar";
-
+import { useMediaQuery } from '@mantine/hooks';
 import { CollectionContext } from "./components/Context/Collection";
 
 function App() {
@@ -26,6 +26,7 @@ function App() {
   const toggleColorScheme = (value) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
   const [collection, setCollection] = useState([]);
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <ColorSchemeProvider
@@ -43,7 +44,7 @@ function App() {
               <SidebarProvider>
                 <AppShell
                   padding="md"
-                  navbar={<Sidebar />}
+                  navbar={isMobile ? null : <Sidebar />}
                   header={
                     <Header
                       className="inline-block p-6 bg-gradient-to-tr from-green-400 to-blue-400"

@@ -1,6 +1,15 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Image, AuthorName } from "../../components/ImageItem/ImageItem.styles";
+import {
+  Container,
+  ImageContainer,
+  Image,
+  AuthorContainer,
+  AuthorImage,
+  AuthorName,
+  StatsContainer,
+  Stat,
+} from "./Photo.styles";
 
 const Photo = () => {
   let location = useLocation();
@@ -13,32 +22,30 @@ const Photo = () => {
     }
   }, [location.state, navigate]);
 
-  console.log(location.state);
-
   if (!location.state || !location.state.user) {
     return null;
   }
 
   const { user, urls, likes, views } = location.state;
 
-  console.log(user);
-  console.log(user.first_name);
-  console.log(user.profile_image.medium);
-  console.log(urls.regular);
-  console.log("likes", likes);
-  console.log("views", views);
-
   return (
-    <div>
-      <div>
-        <Image
-          src={user.profile_image.medium}
-          alt="name of the author"
-        />
-        <AuthorName>{user.first_name}</AuthorName>
-      </div>
-      <Image src={urls.small} />
-    </div>
+    <Container>
+      <AuthorContainer>
+        <AuthorImage src={user.profile_image.medium} alt={user.name} />
+        <AuthorName>{user.name}</AuthorName>
+      </AuthorContainer>
+      <ImageContainer>
+        <Image src={urls.regular} alt="Photo" />
+      </ImageContainer>
+      <StatsContainer>
+        <Stat>
+          <span>{likes}</span> Likes
+        </Stat>
+        <Stat>
+          <span>{views}</span> Views
+        </Stat>
+      </StatsContainer>
+    </Container>
   );
 };
 

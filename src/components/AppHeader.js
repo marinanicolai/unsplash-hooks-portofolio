@@ -40,12 +40,17 @@ import {
 } from "../utils/resources/index";
 import { useSidebar } from "../../src/hooks/context/Sidebar";
 import SearchForm from "./SearchForm";
+import { useMediaQuery } from '@mantine/hooks';
+
 
 const AppHeader = () => {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const { isOpen, setSidebar } = useSidebar();
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
   return (
     <>
+    {isMobile ? null : (
       <Group position="apart">
         <Box display="flex">
           {colorScheme === "dark" ? (
@@ -83,40 +88,9 @@ const AppHeader = () => {
             </Tooltip>
           </ActionIcon>
         </Group>
-      </Group>
+      </Group> )}
 
-      {/* <Form className="d-flex" onSubmit={handleFormSubmit}>
-          <Form.Control
-            type="search"
-            placeholder="Search high-resolution images"
-            className="me-2"            
-            onChange={(e) => setSearchText(e.target.value)}
-          />
-          <Button variant="secondary" type="submit">
-            Search
-          </Button>
-        </Form> */}
-      {/* <Navbar.Brand href="#">
-        {" "}
-        <Link to="/">
-          {theme === "light" ? (
-            <Image
-              alt="camera-img"
-              className="camera-image"
-              src={blackMoon}
-              onClick={ToggleTheme}
-            />
-          ) : (
-            <Image
-              alt="camera-img"
-              className="camera-image"
-              src={greySun}
-              onClick={ToggleTheme}
-            />
-          )}
-        </Link>
-      </Navbar.Brand> */}
-      {/* </Navbar.Collapse> */}
+     
     </>
   );
 };
