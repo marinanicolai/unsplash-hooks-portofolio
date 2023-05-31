@@ -19,13 +19,14 @@ const Item = ({ item, index, likes, setCurrentImageIndex }) => {
       })}
     >
       <Image
-         onClick={handleClick2()}
+         
         key={item.id}
         src={item.urls.small}
         alt="sample"
         style={{ width: "100%", height: "auto !important" }}
         onClick={() => setCurrentImageIndex(index)}
       />
+  
     </Box>
   );
 };

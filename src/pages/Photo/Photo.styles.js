@@ -10,6 +10,8 @@ export const Container = styled.div`
 
 export const ImageContainer = styled.div`
   margin-bottom: 20px;
+  display:flex;
+  flex-direction:column;
   
 `;
 
@@ -55,7 +57,7 @@ export const Stat = styled.div`
 `;
 
 export const DownloadButton = styled.button`
-  
+background-color:green;
   color: #fff;
   padding: 10px 15px;
   border: none;

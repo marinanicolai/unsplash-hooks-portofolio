@@ -49,7 +49,7 @@ const Photo = () => {
       </AuthorContainer>
       <ImageContainer>
         <Image src={urls.regular} alt="Photo" />
-        <DownloadButton onClick={handleDownload}>Download</DownloadButton>
+<DownloadButton onClick={handleDownload}>Download</DownloadButton>
       </ImageContainer>
       <Description>{alt_description}</Description>
 

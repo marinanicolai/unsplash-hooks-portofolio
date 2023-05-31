@@ -1,6 +1,6 @@
 import React, { useContext, useState, useCallback } from "react";
 import { useDisclosure } from "@mantine/hooks";
-import { Modal, Box, Progress, rem } from "@mantine/core";
+import { Modal, Box} from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { IconArrowRight, IconArrowLeft } from "@tabler/icons-react";
 import ImageItem from "../ImageItem";
@@ -11,8 +11,11 @@ import { CollectionContext } from "../Context/Collection";
 import Photo from "../../pages/Photo";
 import ImageModal from "../ImageModal";
 import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
+import { IconHeartFilled, IconHeart } from "@tabler/icons-react";
+import { HeartIcon } from "@primer/octicons-react";
 
-import { Header, AuthorInfo, StyledLink } from "./PhotoGallery.styles";
+
+
 
 const ImageGallery = ({ data }) => {
   const location = useLocation();
@@ -26,34 +29,25 @@ const ImageGallery = ({ data }) => {
   const hideUserLink = location.pathname?.includes("user");
   const { collection, setCollection } = useContext(CollectionContext);
   const [opened, { open, close }] = useDisclosure(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+
 
   const handleClick = (id) => {
     setCollection((current) => [...current, id]);
   };
+
   function toggleModal() {
     setCurrentImageIndex(null);
   }
 
-  const isCurrentImageSaved =
-    favorites && favorites?.find((image) => image?.id === currentImage?.id);
+  
 
-  const Arrow = ({ direction }) => {
-    const clickHandler = (direction) => {
-      return direction === "left"
-        ? setCurrentImageIndex(currentImageIndex - 1)
-        : setCurrentImageIndex(currentImageIndex + 1);
-    };
-    const image =
-      direction === "left" ? (
-        <IconArrowRight size={16} />
-      ) : (
-        <IconArrowLeft size={16} />
-      );
-    return <div image={image} onClick={clickHandler} />;
+  const toggleFavorite = () => {
+    setIsFavorite((prevFavorite) => !prevFavorite);
   };
   return (
     <div>
-      <Modal
+       <Modal
         opened={opened}
         onClose={close}
         centered
@@ -63,6 +57,7 @@ const ImageGallery = ({ data }) => {
           timingFunction: "linear",
         }}
       >
+        {isFavorite ? <IconHeartFilled onClick={toggleFavorite} /> : <IconHeart onClick={toggleFavorite} />}
             
 
 
@@ -77,7 +72,9 @@ const ImageGallery = ({ data }) => {
                 index={index}
                 setCurrentImageIndex={setCurrentImageIndex}
               />
+              
             </Link>
+            
           ) : null;
         })}
             
