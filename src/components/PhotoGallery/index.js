@@ -63,19 +63,10 @@ const ImageGallery = ({ data }) => {
           timingFunction: "linear",
         }}
       >
-        {data?.map((item, index) => {
-          return currentImageIndex === index ? (
-            <Link key={item.id} to={`photo/${item.id}`}>
-              {" "}
-              <ImageItem
-                key={item.id}
-                item={item}
-                index={index}
-                setCurrentImageIndex={setCurrentImageIndex}
-              />
-            </Link>
-          ) : null;
-        })}
+             <div><Link path="/" >Home</Link></div>
+             <div><Link path="/favorites" >F</Link></div>
+             <p>this is an image page</p>
+
       </Modal>
 
       <Box

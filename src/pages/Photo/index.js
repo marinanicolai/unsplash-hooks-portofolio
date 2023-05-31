@@ -14,26 +14,30 @@ const Photo = () => {
   }, [location.state, navigate]);
 
   console.log(location.state);
-  console.log(location.state.user.first_name);
-  console.log(location.state.user.profile_image.medium);
-  console.log(location.state.urls.regular);
-  console.log("likes", location.state.likes);
-  console.log("views", location.state.views);
 
-  if (!location.state) {
+  if (!location.state || !location.state.user) {
     return null;
   }
+
+  const { user, urls, likes, views } = location.state;
+
+  console.log(user);
+  console.log(user.first_name);
+  console.log(user.profile_image.medium);
+  console.log(urls.regular);
+  console.log("likes", likes);
+  console.log("views", views);
 
   return (
     <div>
       <div>
         <Image
-          src={location.state.user.profile_image.medium}
+          src={user.profile_image.medium}
           alt="name of the author"
         />
-        <AuthorName>{location.state.user.first_name}</AuthorName>
+        <AuthorName>{user.first_name}</AuthorName>
       </div>
-      <Image src={location.state.urls.small} />
+      <Image src={urls.small} />
     </div>
   );
 };
