@@ -44,6 +44,8 @@ const ImageGallery = ({ data }) => {
 
   const toggleFavorite = () => {
     setIsFavorite((prevFavorite) => !prevFavorite);
+    
+    console.log(currentImage);
   };
   return (
     <div>

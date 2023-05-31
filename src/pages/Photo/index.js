@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
+
 import {
   Container,
   ImageContainer,
@@ -12,6 +13,7 @@ import {
   DownloadButton,
   Description,
 } from "./Photo.styles";
+import Item from "../../components/ImageItem";
 
 const Photo = () => {
   let location = useLocation();
@@ -30,13 +32,13 @@ const Photo = () => {
   }
 
   const { links, alt_description, user, urls, likes, views } = location.state;
+  console.log(user);
   const handleDownload = () => {
     // Implement the download logic here
     // For example, you can use the 'download' attribute to initiate the download of the image
     const link = document.createElement("a");
     link.href = location.state.urls.regular;
-    link.download = "image.jpg";
-    link.click();
+    window.open(link.href);
   };
   
   
@@ -45,11 +47,12 @@ const Photo = () => {
     <Container>
       <AuthorContainer>
         <AuthorImage src={user.profile_image.medium} alt={user.name} />
-        <AuthorName>{user.name}</AuthorName>
+        <Link key={user} to ={`../users/${user.name}`} state={user}><AuthorName>{user.name}</AuthorName></Link>
       </AuthorContainer>
       <ImageContainer>
         <Image src={urls.regular} alt="Photo" />
 <DownloadButton onClick={handleDownload}>Download</DownloadButton>
+
       </ImageContainer>
       <Description>{alt_description}</Description>
 

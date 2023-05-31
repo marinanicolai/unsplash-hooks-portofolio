@@ -72,7 +72,7 @@ function App() {
                     <Route path="search/:searchTerm" element={<Search />} />
                     <Route path="favorites" element={<Favorites />} />
                     <Route path="item/:id" element={<ImageItem />} />
-                    <Route path="user/:username" element={<User />} />
+                    <Route path="users/:username" element={<User />} />
                     <Route path="photo/:photoid" element={<Photo />} />
                     <Route path="search/:searchTerm/photo/:photoid" element={<Photo />} />
                     

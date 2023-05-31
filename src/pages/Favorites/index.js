@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import ImageGallery from "../../components/PhotoGallery";
-import { useContext } from "react";
 import { StorageContext } from "../../providers";
 
 const Favorites = () => {
   const { favorites } = useContext(StorageContext);
 
   return (
-    <>
-      <div>{favorites && <ImageGallery data={favorites} />}</div>
-    </>
+    <div>
+      {favorites && <ImageGallery data={favorites} />}
+    </div>
   );
 };
 
