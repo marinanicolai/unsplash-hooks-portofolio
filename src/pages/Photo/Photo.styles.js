@@ -10,6 +10,7 @@ export const Container = styled.div`
 
 export const ImageContainer = styled.div`
   margin-bottom: 20px;
+  
 `;
 
 export const Image = styled.img`
@@ -51,4 +52,23 @@ export const Stat = styled.div`
   span {
     margin-right: 5px;
   }
+`;
+
+export const DownloadButton = styled.button`
+  
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+  text-align:center;
+  &:hover {
+    background-color: #45a049;
+  }
+`;
+export const Description = styled.p`
+  /* Add your description styles here */
 `;

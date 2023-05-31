@@ -9,6 +9,8 @@ import {
   AuthorName,
   StatsContainer,
   Stat,
+  DownloadButton,
+  Description,
 } from "./Photo.styles";
 
 const Photo = () => {
@@ -21,13 +23,24 @@ const Photo = () => {
       return navigate("/");
     }
   }, [location.state, navigate]);
+  console.log(location.state);
 
   if (!location.state || !location.state.user) {
     return null;
   }
 
-  const { user, urls, likes, views } = location.state;
-
+  const { links, alt_description, user, urls, likes, views } = location.state;
+  const handleDownload = () => {
+    // Implement the download logic here
+    // For example, you can use the 'download' attribute to initiate the download of the image
+    const link = document.createElement("a");
+    link.href = location.state.urls.regular;
+    link.download = "image.jpg";
+    link.click();
+  };
+  
+  
+  
   return (
     <Container>
       <AuthorContainer>
@@ -36,7 +49,10 @@ const Photo = () => {
       </AuthorContainer>
       <ImageContainer>
         <Image src={urls.regular} alt="Photo" />
+        <DownloadButton onClick={handleDownload}>Download</DownloadButton>
       </ImageContainer>
+      <Description>{alt_description}</Description>
+
       <StatsContainer>
         <Stat>
           <span>{likes}</span> Likes
