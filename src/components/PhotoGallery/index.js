@@ -44,9 +44,17 @@ const ImageGallery = ({ data }) => {
 
   const toggleFavorite = () => {
     setIsFavorite((prevFavorite) => !prevFavorite);
-    
-    console.log(currentImage);
   };
+
+  const handleCombinedClickUnfav = () => {
+    toggleFavorite();
+    onUnFav?.(currentImage);
+  }
+  const handleCombinedClickFav = () => {
+    toggleFavorite();
+    onFav?.(currentImage);
+  }
+
   return (
     <div>
        <Modal
@@ -59,7 +67,7 @@ const ImageGallery = ({ data }) => {
           timingFunction: "linear",
         }}
       >
-        {isFavorite ? <IconHeartFilled onClick={toggleFavorite} /> : <IconHeart onClick={toggleFavorite} />}
+        {isFavorite ? <IconHeartFilled onClick={handleCombinedClickUnfav} /> : <IconHeart onClick={handleCombinedClickFav} />}
             
 
 
