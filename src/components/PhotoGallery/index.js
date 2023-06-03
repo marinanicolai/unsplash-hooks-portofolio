@@ -1,6 +1,6 @@
 import React, { useContext, useState, useCallback } from "react";
 import { useDisclosure } from "@mantine/hooks";
-import { Modal, Box} from "@mantine/core";
+import { Modal, Box } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { IconArrowRight, IconArrowLeft } from "@tabler/icons-react";
 import ImageItem from "../ImageItem";
@@ -14,9 +14,6 @@ import { Card, Image, Text, Badge, Button, Group } from "@mantine/core";
 import { IconHeartFilled, IconHeart } from "@tabler/icons-react";
 import { HeartIcon } from "@primer/octicons-react";
 
-
-
-
 const ImageGallery = ({ data }) => {
   const location = useLocation();
   const [currentImageIndex, setCurrentImageIndex] = useState(null);
@@ -29,8 +26,8 @@ const ImageGallery = ({ data }) => {
   const hideUserLink = location.pathname?.includes("user");
   const { collection, setCollection } = useContext(CollectionContext);
   const [opened, { open, close }] = useDisclosure(false);
-  const [isFavorite, setIsFavorite] = useState(false);
 
+  const isFavorite = favorites.some((image) => image.id === currentImage?.id);
 
   const handleClick = (id) => {
     setCollection((current) => [...current, id]);
@@ -40,24 +37,22 @@ const ImageGallery = ({ data }) => {
     setCurrentImageIndex(null);
   }
 
-  
-
   const toggleFavorite = () => {
-    setIsFavorite((prevFavorite) => !prevFavorite);
+    isFavorite ? onUnFav(currentImage) : onFav(currentImage);
   };
 
   const handleCombinedClickUnfav = () => {
     toggleFavorite();
     onUnFav?.(currentImage);
-  }
+  };
   const handleCombinedClickFav = () => {
     toggleFavorite();
     onFav?.(currentImage);
-  }
+  };
 
   return (
     <div>
-       <Modal
+      <Modal
         opened={opened}
         onClose={close}
         centered
@@ -67,13 +62,14 @@ const ImageGallery = ({ data }) => {
           timingFunction: "linear",
         }}
       >
-        {isFavorite ? <IconHeartFilled onClick={handleCombinedClickUnfav} /> : <IconHeart onClick={handleCombinedClickFav} />}
-            
+        {isFavorite ? (
+          <IconHeartFilled onClick={handleCombinedClickUnfav} />
+        ) : (
+          <IconHeart onClick={handleCombinedClickFav} />
+        )}
 
-
-             {data?.map((item, index) => {
+        {data?.map((item, index) => {
           return currentImageIndex === index ? (
-
             <Link key={item.id} to={`photo/${item.id}`} state={item}>
               {" "}
               <ImageItem
@@ -82,13 +78,9 @@ const ImageGallery = ({ data }) => {
                 index={index}
                 setCurrentImageIndex={setCurrentImageIndex}
               />
-              
             </Link>
-            
           ) : null;
         })}
-            
-          
       </Modal>
 
       <Box
