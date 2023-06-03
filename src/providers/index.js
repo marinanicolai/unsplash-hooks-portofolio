@@ -6,6 +6,8 @@ export const StorageContext = React.createContext();
 export const StorageProvider = ({ children }) => {
   const [favorites, setValue] = useLocalStorage("favorites", []);
 
+  console.log("favorites", favorites);
+
   const onFav = useCallback(
     (image) => {
       const favs = [...favorites, image];
